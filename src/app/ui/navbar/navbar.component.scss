@@ -1,0 +1,7 @@
+.nav-actions {
+    display: flex;
+    width: 100%;
+    &__action {
+        cursor: pointer;
+    }
+}
