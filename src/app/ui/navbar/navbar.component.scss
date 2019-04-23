@@ -19,14 +19,25 @@
 .nav-actions {
 	display: flex;
 	width: 100%;
+	height: 100%;
 	&__action {
 		cursor: pointer;
+		height: 100%;
 	}
 }
 
 .wallet-status {
-    width: 400px;
-    height: 100%;
-    border-radius: 0;
+	width: 400px;
+	height: 100%;
+	border-radius: 0;
+}
+.wallet-select {
+	width: 200px;
+	/deep/ & button {
+		outline: none;
+	}
 }
 
+// .wallet-option {
+// 	font-family: "Segou UI, Helvetica";
+// }

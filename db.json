@@ -6,7 +6,7 @@
       "lastExpenses": {},
       "balance": "450",
       "currency": "uah",
-      "active": false
+      "active": true
     },
     {
       "id": 2,
@@ -14,7 +14,7 @@
       "lastExpenses": {},
       "balance": "400",
       "currency": "uah",
-      "active": true
+      "active": false
     },
     {
       "id": 3,

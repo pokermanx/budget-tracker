@@ -3,6 +3,7 @@ import { WalletService } from 'src/app/shared/services/wallet.service';
 import { WalletModel } from 'src/app/shared/models/wallet.model';
 import { WalletProvider } from 'src/app/shared/providers/wallet.provider';
 import { FormControl } from '@angular/forms';
+import { NbDialogService } from '@nebular/theme';
 
 @Component({
     selector: 'app-navbar',
@@ -17,19 +18,22 @@ export class NavBarComponent implements OnInit {
 
     constructor(
         private walletProvider: WalletProvider,
-        private walletService: WalletService
+        private walletService: WalletService,
+        private dialogService: NbDialogService
     ) {
         this.initControls();
     }
 
     initControls() {
         this.walletControl.valueChanges.subscribe(val => {
-            this.walletService.changeWalletStatus(val)
-                // @ts-ignore
-                .subscribe((res: WalletModel) => {
-                    this.walletProvider.changeCurrentWallet(res);
-                    this.ngOnInit();
-                });
+            if (val) {
+                this.walletService.changeWalletStatus(val)
+                    // @ts-ignore
+                    .subscribe((res: WalletModel) => {
+                        this.walletProvider.changeCurrentWallet(res);
+                        this.ngOnInit();
+                    });
+            }
         });
     }
 
@@ -40,5 +44,8 @@ export class NavBarComponent implements OnInit {
                 this.wallets = res;
             });
         console.log(this.myWallet)
+    }
+
+    addNewWallet() {
     }
 }
