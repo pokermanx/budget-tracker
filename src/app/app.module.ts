@@ -7,6 +7,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NbThemeModule, NbLayoutModule } from '@nebular/theme';
 import { UiModule } from './ui/navbar/ui.module';
 import { HttpClientModule } from '@angular/common/http';
+import { TransactionsModule } from './transactions/transactions.module';
 
 @NgModule({
   declarations: [

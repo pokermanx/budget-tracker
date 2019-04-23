@@ -1,6 +1,9 @@
+import { TransactionModel } from './transaction.model';
+
 export class WalletModel {
+    id: number;
     title: string;
-    transactions: Array<any>;
+    transactions: Array<TransactionModel>;
     budgets: Array<any>;
     debts: Array<any>;
     categories: Array<any>;
