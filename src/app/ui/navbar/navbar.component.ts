@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { WalletService } from 'src/app/shared/services/wallet.service';
+import { WalletModel } from 'src/app/shared/models/wallet.model';
 
 @Component({
     selector: 'app-navbar',
@@ -7,7 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavBarComponent implements OnInit {
 
-    constructor() {}
+    myWallet: WalletModel;
 
-    ngOnInit() {}
+    constructor(
+        private walletService: WalletService
+    ) {}
+
+    ngOnInit() {
+        this.walletService.getBalance().subscribe(res => {
+            this.myWallet = res[0];
+        });
+    }
 }

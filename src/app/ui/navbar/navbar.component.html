@@ -1,8 +1,11 @@
-<nb-layout center>
-    <nb-layout-header subheader>
+<nb-layout center class="main-container">
+    <nb-layout-header class="nav-top">
+        <nb-layout-column class="wallet-status">
+            <button nbButton hero status="info" class="wallet-status">Last Expanses</button>
+        </nb-layout-column>
         <nb-actions size="big" class="nav-actions" fullWidth>
             <nb-action class="nav-actions__action">
-                Dashboard
+                Summary
             </nb-action>
             <nb-action class="nav-actions__action">
                 Statistics
@@ -14,8 +17,8 @@
                 Wallets
             </nb-action>
         </nb-actions>
+        <nb-layout-column class="wallet-status">
+            <button nbButton hero status="success" class="wallet-status">Balance: {{myWallet.balance}}₴</button>
+        </nb-layout-column>
     </nb-layout-header>
-
-    <nb-layout-column>
-    </nb-layout-column>
 </nb-layout>

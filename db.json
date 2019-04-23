@@ -1,0 +1,28 @@
+{
+    "wallets": [
+        {
+            "id": 1,
+            "title": "Personal",
+            "transactions": [],
+            "budgets": [],
+            "debts": [],
+            "categories": [],
+            "marks": [],
+            "lastExpenses" : {},
+            "balance" : "450",
+            "currency" : "uah"
+        },
+        {
+            "id": 2,
+            "title": "Test",
+            "transactions": [],
+            "budgets": [],
+            "debts": [],
+            "categories": [],
+            "marks": [],
+            "lastExpenses" : {},
+            "balance" : "450",
+            "currency" : "uah"
+        }
+    ]
+}
