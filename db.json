@@ -1,28 +1,42 @@
 {
-    "wallets": [
-        {
-            "id": 1,
-            "title": "Personal",
-            "transactions": [],
-            "budgets": [],
-            "debts": [],
-            "categories": [],
-            "marks": [],
-            "lastExpenses" : {},
-            "balance" : "450",
-            "currency" : "uah"
-        },
-        {
-            "id": 2,
-            "title": "Test",
-            "transactions": [],
-            "budgets": [],
-            "debts": [],
-            "categories": [],
-            "marks": [],
-            "lastExpenses" : {},
-            "balance" : "450",
-            "currency" : "uah"
-        }
-    ]
+  "wallets": [
+    {
+      "id": 1,
+      "title": "Personal",
+      "lastExpenses": {},
+      "balance": "450",
+      "currency": "uah",
+      "active": false
+    },
+    {
+      "id": 2,
+      "title": "Test",
+      "lastExpenses": {},
+      "balance": "400",
+      "currency": "uah",
+      "active": true
+    },
+    {
+      "id": 3,
+      "title": "test2",
+      "lastExpenses": {},
+      "balance": "350",
+      "currency": "uah",
+      "active": false
+    }
+  ],
+  "transactions": [
+    {
+      "title": "new",
+      "walletId": 1
+    },
+    {
+      "title": "test",
+      "walletId": 2
+    }
+  ],
+  "categories": [],
+  "marks": [],
+  "debts": [],
+  "budgets": []
 }

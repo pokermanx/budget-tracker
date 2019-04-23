@@ -14,11 +14,17 @@
                 Transactions
             </nb-action>
             <nb-action class="nav-actions__action">
-                Wallets
+                <nb-select [placeholder]="myWallet ? myWallet.title : 'Wallets'" [(selected)]="selectedItem"
+                    [formControl]="walletControl"
+                >
+                    <nb-option *ngFor="let wallet of wallets" [value]="wallet.id">{{ wallet.title }}</nb-option>
+                  </nb-select>
             </nb-action>
         </nb-actions>
         <nb-layout-column class="wallet-status">
-            <button nbButton hero status="success" class="wallet-status">Balance: {{myWallet ? myWallet.balance : 0}}₴</button>
+            <button nbButton hero status="success" class="wallet-status">Balance:
+                {{myWallet ? myWallet.balance : 0}}₴
+            </button>
         </nb-layout-column>
     </nb-layout-header>
 </nb-layout>
