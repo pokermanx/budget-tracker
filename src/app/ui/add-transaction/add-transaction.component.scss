@@ -1,3 +1,5 @@
+@import "../../../styles.scss";
+
 .transaction-tabs {
 	/deep/ & ul {
 		& li {
@@ -12,6 +14,10 @@
 	display: flex;
 }
 
+.main-container {
+	width: 600px;
+}
+
 .sum-input {
 	border-top-right-radius: 0 !important;
 	border-bottom-right-radius: 0 !important;
@@ -19,13 +25,13 @@
 
 .currency-select {
 	/deep/ button {
-        outline: none;
+		outline: none;
 		border-top-left-radius: 0;
 		border-bottom-left-radius: 0;
-        height: 100%;
-        &::after {
-            display: none;
-        }
+		height: 100%;
+		&::after {
+			display: none;
+		}
 	}
 }
 
@@ -33,4 +39,74 @@
 	nb-card {
 		width: auto !important;
 	}
+}
+
+.category-tile {
+	width: auto;
+	border: nb-theme(select-border-width) solid nb-theme(card-separator);
+	border-radius: nb-theme(btn-border-radius);
+	margin: 0 10px;
+	padding: 10px 20px;
+	white-space: nowrap;
+	cursor: pointer;
+
+	&--no {
+		background: repeating-linear-gradient(
+			45deg,
+			nb-theme(select-bg),
+			nb-theme(select-bg) 10px,
+			nb-theme(card-separator) 10px,
+			nb-theme(card-separator) 20px
+		  );
+	}
+}
+.category-tile-add {
+	display: flex;
+	align-items: center;
+	cursor: pointer;	
+}
+
+.add-category-btn {
+	height: 100%;
+}
+
+.categories-list {
+	list-style: none;
+	display: flex;
+	align-items: center;
+	height: 45px;
+}
+
+.selected-category {
+	filter: brightness(130%);
+	box-shadow: nb-theme(menu-submenu-active-shadow)
+}
+
+.tab-body {
+	height: auto;
+}
+
+.date-selection {
+	margin: 10px 0;
+	display: flex;
+	align-items: center;
+}
+
+.yesterday-toggle {
+	border-top-right-radius: 0 !important; 
+	border-bottom-right-radius: 0 !important; 
+}
+
+.date-input-toggle {
+	border-top-left-radius: 0 !important; 
+	border-bottom-left-radius: 0 !important; 
+}
+
+.today-toggle {
+	border-radius: 0 !important;
+}
+
+.note-input {
+	resize: none;
+	height: 80px;
 }

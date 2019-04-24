@@ -8,7 +8,6 @@ import { CategoryModel } from '../models/category.model';
 export class WalletProvider {
 
     private currentWallet: WalletModel;
-    private defaultCategories: CategoryModel[];
 
     constructor(
         private http: HttpClient
@@ -16,14 +15,6 @@ export class WalletProvider {
 
     loadWallet() {
         return this.http.get<WalletModel[]>(`${environment.apiEndpoint}/wallets?active=true`);
-    }
-
-    loadDefaultCategories() {
-        return this.http.get<CategoryModel[]>(`${environment.apiEndpoint}/initialCategories`);
-    }
-
-    getDefaultCategories() {
-        return this.defaultCategories;
     }
 
     getWallet() {
@@ -34,9 +25,17 @@ export class WalletProvider {
         this.currentWallet = wallet;
     }
 
+    updateCurrentWallet() {
+        return new Promise((resolve, reject) => {
+            this.loadWallet()
+                .subscribe((res: WalletModel[]) => {
+                    [this.currentWallet] = res;
+                    resolve(true);
+                });
+        });
+    }
+
     init() {
-        this.loadDefaultCategories()
-            .subscribe((categories: CategoryModel[]) => this.defaultCategories = categories);
         return new Promise((resolve, reject) => {
             this.loadWallet()
                 .subscribe((res: WalletModel[]) => {

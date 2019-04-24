@@ -52,7 +52,10 @@ export class NavBarComponent implements OnInit {
         // seTimeout due to angular bug with change detection during view creation
         setTimeout(() => {
             this.dialogService.open(AddWalletComponent)
-                .onClose.subscribe(() => this.ngOnInit());
+                .onClose.subscribe(() => {
+                    this.walletProvider.updateCurrentWallet()
+                        .then(() => this.ngOnInit());
+                });
         });
     }
 

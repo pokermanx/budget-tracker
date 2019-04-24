@@ -7,6 +7,7 @@ import { WalletCategoriesModel, CategoryModel } from 'src/app/shared/models/cate
 import { finalize } from 'rxjs/operators';
 import { WalletProvider } from 'src/app/shared/providers/wallet.provider';
 import { WalletService } from 'src/app/shared/services/wallet.service';
+import { CategoriesProvider } from 'src/app/shared/providers/categories.provider';
 
 @Component({
     selector: 'app-add-wallet',
@@ -29,9 +30,10 @@ export class AddWalletComponent implements OnInit {
         private dialogRef: NbDialogRef<AddWalletComponent>,
         private categoriesService: CategoriesService,
         private walletProvider: WalletProvider,
+        private categoriesProvider: CategoriesProvider,
         private walletService: WalletService
     ) {
-        this.defaultCategories = walletProvider.getDefaultCategories();
+        this.defaultCategories = categoriesProvider.getDefaultCategories();
     }
 
     ngOnInit() {

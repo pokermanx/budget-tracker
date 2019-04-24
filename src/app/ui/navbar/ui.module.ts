@@ -9,7 +9,8 @@ import {
     NbDialogModule,
     NbInputModule,
     NbOverlayModule,
-    NbTabsetModule
+    NbTabsetModule,
+    NbDatepickerModule
 } from '@nebular/theme';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
@@ -18,6 +19,7 @@ import { AddWalletComponent } from '../add-wallet/add-wallet.component';
 import { ValidationMessagesComponent } from '../validation-messages/validation-messages.component';
 import { TransactionsModule } from 'src/app/transactions/transactions.module';
 import { AddTransactionComponent } from '../add-transaction/add-transaction.component';
+import { NbMomentDateModule } from '@nebular/moment';
 
 @NgModule({
     declarations: [
@@ -39,6 +41,8 @@ import { AddTransactionComponent } from '../add-transaction/add-transaction.comp
         NbInputModule,
         NbOverlayModule,
         NbTabsetModule,
+        NbDatepickerModule,
+        NbMomentDateModule,
         RouterModule
     ],
     exports: [NavBarComponent, ValidationMessagesComponent],

@@ -1,7 +1,7 @@
 export class TransactionModel {
     id: number;
     date: string;
-    type: 'income' | 'outcome';
+    type: 'income' | 'outgoing';
     value: string;
     description?: string;
     category: string;

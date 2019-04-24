@@ -23,7 +23,8 @@ export class WalletService {
 
     changeWalletStatus(id: number) {
         return this.http.patch(`${environment.apiEndpoint}/wallets/${this.walletProvider.getWallet().id}`, { active: false })
-            .pipe(mergeMap(() => {
+            .pipe(mergeMap(res => {
+                console.log(res)
                 return this.http.patch<WalletModel>(`${environment.apiEndpoint}/wallets/${id}`, { active: true });
             })
         );
@@ -44,7 +45,6 @@ export class WalletService {
         return this.http.post(`${environment.apiEndpoint}/wallets`, request)
             // @ts-ignore
             .pipe(mergeMap((newWallet: WalletModel) => {
-                this.walletProvider.changeCurrentWallet(newWallet);
                 return this.categoriesService.setWalletCategories(categories, newWallet.id, newWallet.title);
             }));
     }
