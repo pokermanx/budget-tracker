@@ -1,11 +1,13 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Currency, CurrencySymbol } from 'src/app/shared/models/wallet.model';
 import { WalletCategoriesModel } from 'src/app/shared/models/category.model';
 import { CategoriesProvider } from 'src/app/shared/providers/categories.provider';
-import { detectChanges } from '@angular/core/src/render3';
 import { finalize } from 'rxjs/operators';
 import * as moment from 'moment';
+import { TransactionModel } from 'src/app/shared/models/transaction.model';
+import { CategoriesService } from 'src/app/shared/services/categories.service';
+import { NbDialogRef } from '@nebular/theme';
 
 @Component({
     selector: 'app-add-transaction',
@@ -23,22 +25,26 @@ export class AddTransactionComponent implements OnInit {
     selectedOItem = -1;
     selectedIItem = -1;
 
+    request: any = {};
 
     selectedDate = this.moment();
-    selectedTypeIdx = 1;
+    selectedDateTypeIdx = 1;
+    type: 'income' | 'outgoing';
+    description: string;
 
     currencies = Currency;
     currencySymbols = CurrencySymbol;
     walletCategories: WalletCategoriesModel;
 
     constructor(
-        private categoriesProvider: CategoriesProvider
+        private categoriesProvider: CategoriesProvider,
+        private categoriesService: CategoriesService,
+        private dialogRef: NbDialogRef<AddTransactionComponent>
     ) {
         categoriesProvider.loadWalletsCategories()
             .pipe(finalize(() => this.isLoaded = true))
             .subscribe((res: WalletCategoriesModel[]) => {
                 [this.walletCategories] = res;
-                console.log(this.walletCategories)
             });
     }
 
@@ -48,9 +54,31 @@ export class AddTransactionComponent implements OnInit {
 
     init() {
         this.sumForm = new FormGroup({
-            value: new FormControl(0),
+            value: new FormControl(0, [
+                Validators.required,
+                Validators.pattern(/^[1-9][0-9]*$/)
+            ]),
             currency: new FormControl(1),
         });
+    }
+
+    onSubmit() {
+        this.request = {
+            date: this.selectedDate.format('MM/DD/YYYY'),
+            type: this.type,
+            value: this.sumForm.controls.value.value,
+            description: this.description,
+            currency: this.sumForm.controls.currency.value,
+            category: -1
+        };
+        if (this.type === 'outgoing') {
+            this.request.category = this.selectedOItem;
+        } else {
+            this.request.category = this.selectedIItem;
+        }
+
+        this.categoriesService.addTransaction(this.request)
+            .subscribe(() => this.closeDialog(true));
     }
 
     updateSelected(id: number, type: string) {
@@ -61,12 +89,20 @@ export class AddTransactionComponent implements OnInit {
         }
     }
 
-    changeType(type: number) {
-        this.selectedTypeIdx = type;
+    onTabChange() {
+        this.type = this.type === 'outgoing' ? 'income' : 'outgoing';
+    }
+
+    changeDate(type: number) {
+        this.selectedDateTypeIdx = type;
         if (type === 0) {
             this.selectedDate = this.moment().subtract('1', 'day');
         } else if (type === 1) {
             this.selectedDate = this.moment();
         }
+    }
+
+    closeDialog(status: boolean) {
+        this.dialogRef.close(status);
     }
 }

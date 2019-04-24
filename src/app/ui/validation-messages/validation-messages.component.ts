@@ -18,6 +18,8 @@ export class ValidationMessagesComponent implements OnInit {
     ngOnInit() {
         if (this.errors.required) {
             this.errorMessage = 'This field is required.';
+        } else if (this.errors.pattern) {
+            this.errorMessage = 'Invalid parameters';
         }
     }
 }

@@ -57,13 +57,13 @@
 			nb-theme(select-bg) 10px,
 			nb-theme(card-separator) 10px,
 			nb-theme(card-separator) 20px
-		  );
+		);
 	}
 }
 .category-tile-add {
 	display: flex;
 	align-items: center;
-	cursor: pointer;	
+	cursor: pointer;
 }
 
 .add-category-btn {
@@ -79,7 +79,7 @@
 
 .selected-category {
 	filter: brightness(130%);
-	box-shadow: nb-theme(menu-submenu-active-shadow)
+	box-shadow: nb-theme(menu-submenu-active-shadow);
 }
 
 .tab-body {
@@ -93,13 +93,13 @@
 }
 
 .yesterday-toggle {
-	border-top-right-radius: 0 !important; 
-	border-bottom-right-radius: 0 !important; 
+	border-top-right-radius: 0 !important;
+	border-bottom-right-radius: 0 !important;
 }
 
 .date-input-toggle {
-	border-top-left-radius: 0 !important; 
-	border-bottom-left-radius: 0 !important; 
+	border-top-left-radius: 0 !important;
+	border-bottom-left-radius: 0 !important;
 }
 
 .today-toggle {
@@ -109,4 +109,17 @@
 .note-input {
 	resize: none;
 	height: 80px;
+}
+
+.buttons-container {
+	display: flex;
+	justify-content: flex-end;
+}
+
+.form-button {
+	outline: none;
+
+	&--success {
+		margin-left: 20px;
+	}
 }

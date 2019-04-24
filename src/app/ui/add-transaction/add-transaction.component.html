@@ -1,9 +1,9 @@
-<nb-card [size]="'medium'" *ngIf="isLoaded">
+<nb-card *ngIf="isLoaded">
     <nb-card-header>Add Transaction</nb-card-header>
     <nb-card-body class="main-container">
         <form [formGroup]="sumForm">
             <div class="sum-input-wrapper">
-                <input class="sum-input" formControlName="value" type="text" nbInput placeholder="0">
+                <input class="sum-input" formControlName="value" type="text" nbInput fullWidth placeholder="Enter Value">
                 <nb-select class="currency-select" formControlName="currency" size="'medium'">
                     <nb-select-label>
                         {{ currencySymbols[sumForm.controls.currency.value] }}
@@ -13,8 +13,9 @@
                     </nb-option>
                 </nb-select>
             </div>
+            <app-validation-messages *ngIf="sumForm.controls.value.invalid && sumForm.controls.value.touched" [errors]="sumForm.controls.value.errors"></app-validation-messages>                
         </form>
-        <nb-tabset class="transaction-tabs">
+        <nb-tabset class="transaction-tabs" (changeTab)="onTabChange()">
             <nb-tab tabTitle="Outgoings">
                 <div class="tab-body">
                     <ul class="categories-list">
@@ -23,30 +24,60 @@
                         </li>
                         <li class="category-tile category-tile--no"
                             [ngClass]="{'selected-category': selectedOItem === -1}"
-                            (click)="updateSelected(-1, 'outgoing')"                        
-                        >
+                            (click)="updateSelected(-1, 'outgoing')">
                             No Category
                         </li>
                         <li class="category-tile" *ngFor="let category of walletCategories.list.outgoingCategories"
                             [ngStyle]="{'border-color': category.color}"
                             [ngClass]="{'selected-category': selectedOItem === category.id}"
-                            (click)="updateSelected(category.id, 'outgoing')"
-                        >   
+                            (click)="updateSelected(category.id, 'outgoing')">
                             {{ category.name }}
                         </li>
                     </ul>
                 </div>
             </nb-tab>
             <nb-tab tabTitle="Income">
-                <p>List of <strong>orders</strong>.</p>
+                <div class="tab-body">
+                    <ul class="categories-list">
+                        <li (click)="addCategory()" class="category-tile-add">
+                            <button nbButton hero status="success" class="add-category-btn">+</button>
+                        </li>
+                        <li class="category-tile category-tile--no"
+                            [ngClass]="{'selected-category': selectedIItem === -1}"
+                            (click)="updateSelected(-1, 'income')">
+                            No Category
+                        </li>
+                        <li class="category-tile" *ngFor="let category of walletCategories.list.incomeCategories"
+                            [ngStyle]="{'border-color': category.color}"
+                            [ngClass]="{'selected-category': selectedIItem === category.id}"
+                            (click)="updateSelected(category.id, 'income')">
+                            {{ category.name }}
+                        </li>
+                    </ul>
+                </div>
             </nb-tab>
         </nb-tabset>
         <div class="date-selection">
-            <button class="yesterday-toggle" nbButton [outline]="selectedTypeIdx !== 0" (click)="changeType(0)" status="primary">Yesterday</button>
-            <button class="today-toggle" nbButton [outline]="selectedTypeIdx !== 1" (click)="changeType(1)" status="primary">Today</button>
-            <input class="date-input-toggle" [(ngModel)]="selectedDate" nbInput placeholder="Another Date" [nbDatepicker]="formpicker" (click)="changeType(2)">
+            <button class="yesterday-toggle" nbButton [outline]="selectedDateTypeIdx !== 0" (click)="changeDate(0)"
+                status="primary">Yesterday</button>
+            <button class="today-toggle" nbButton [outline]="selectedDateTypeIdx !== 1" (click)="changeDate(1)"
+                status="primary">Today</button>
+            <input class="date-input-toggle" [(ngModel)]="selectedDate" nbInput placeholder="Another Date"
+                [nbDatepicker]="formpicker" (click)="changeDate(2)">
             <nb-datepicker #formpicker></nb-datepicker>
         </div>
-        <textarea class="note-input" nbInput fullWidth placeholder="Note"></textarea>
+        <textarea class="note-input" nbInput fullWidth placeholder="Note" [(ngModel)]="description"></textarea>
     </nb-card-body>
+    <nb-card-footer>
+        <div class="buttons-container">
+            <button class="form-button" nbButton hero status="danger" (click)="closeDialog(false)">
+                Cancel
+            </button>
+            <button class="form-button form-button--success" nbButton hero status="success" (click)="onSubmit()"
+                [disabled]="sumForm.invalid"
+            >
+                Add New
+            </button>
+        </div>
+    </nb-card-footer>
 </nb-card>
