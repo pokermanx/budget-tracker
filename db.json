@@ -7,7 +7,7 @@
       "lastExpenses": {},
       "balance": "450",
       "currency": "uah",
-      "active": false
+      "active": true
     },
     {
       "id": 2,
@@ -16,7 +16,7 @@
       "lastExpenses": {},
       "balance": "400",
       "currency": "uah",
-      "active": true
+      "active": false
     },
     {
       "id": 3,
@@ -57,12 +57,22 @@
   ],
   "transactions": [
     {
+      "id": 1,
       "title": "new",
-      "walletId": 1
+      "walletId": 1,
+      "type": "income",
+      "value": 10,
+      "currency": 0,
+      "category": 2
     },
     {
+      "id": 2,
       "title": "test",
-      "walletId": 2
+      "walletId": 2,
+      "type": "outcome",
+      "value": 15,
+      "currency": 0,
+      "category": 2
     }
   ],
   "walletCategories": [

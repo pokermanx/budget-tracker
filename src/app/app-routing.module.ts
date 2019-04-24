@@ -3,7 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { NavBarComponent } from './ui/navbar/navbar.component';
 
 const routes: Routes = [
-  { path: '', component: NavBarComponent, children: [
+  { path: '', children: [
     { path: 'transactions', loadChildren: '../app/transactions/transactions.module#TransactionsModule' }
   ]}
 ];
