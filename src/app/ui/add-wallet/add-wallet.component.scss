@@ -1,0 +1,21 @@
+.form-container {
+    width: 400px;
+}
+
+.form-input-block {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.buttons-container {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.form-button {
+    outline: none;
+
+    &--success {
+        margin-left: 20px;
+    }
+}

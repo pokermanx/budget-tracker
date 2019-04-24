@@ -2,27 +2,57 @@
   "wallets": [
     {
       "id": 1,
+      "period": 0,
       "title": "Personal",
       "lastExpenses": {},
       "balance": "450",
       "currency": "uah",
-      "active": true
+      "active": false
     },
     {
       "id": 2,
+      "period": 0,
       "title": "Test",
       "lastExpenses": {},
       "balance": "400",
       "currency": "uah",
-      "active": false
+      "active": true
     },
     {
       "id": 3,
+      "period": 0,
       "title": "test2",
       "lastExpenses": {},
       "balance": "350",
       "currency": "uah",
-      "active": false
+      "active": true
+    },
+    {
+      "period": 3,
+      "title": "new Walllet",
+      "lastExpanses": {},
+      "balance": 0,
+      "currency": 1,
+      "active": false,
+      "id": 4
+    },
+    {
+      "period": 2,
+      "title": "last test",
+      "lastExpanses": {},
+      "balance": 0,
+      "currency": 2,
+      "active": false,
+      "id": 5
+    },
+    {
+      "period": 3,
+      "title": "new",
+      "lastExpanses": {},
+      "balance": 0,
+      "currency": 1,
+      "active": true,
+      "id": 6
     }
   ],
   "transactions": [
@@ -35,8 +65,183 @@
       "walletId": 2
     }
   ],
-  "categories": [],
-  "marks": [],
+  "walletCategories": [
+    {
+      "id": 1,
+      "walletId": 1,
+      "title": "Personal Categories",
+      "list": [
+        {
+          "id": 1,
+          "name": "Car",
+          "color": "#ffffff"
+        },
+        {
+          "id": 2,
+          "name": "Bank",
+          "color": "#ffffff"
+        },
+        {
+          "id": 3,
+          "name": "Business",
+          "color": "#ffffff"
+        },
+        {
+          "id": 4,
+          "name": "Home",
+          "color": "#ffffff"
+        },
+        {
+          "id": 5,
+          "name": "Education",
+          "color": "#ffffff"
+        },
+        {
+          "id": 6,
+          "name": "Gifts",
+          "color": "#ffffff"
+        },
+        {
+          "id": 7,
+          "name": "Machinery",
+          "color": "#ffffff"
+        },
+        {
+          "id": 8,
+          "name": "Traveling",
+          "color": "#ffffff"
+        },
+        {
+          "id": 9,
+          "name": "Fashion",
+          "color": "#ffffff"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "walletId": 2,
+      "title": "Test Categories",
+      "list": [
+        {
+          "id": 1,
+          "name": "Car",
+          "color": "#ffffff"
+        }
+      ]
+    },
+    {
+      "walletId": 4,
+      "title": "new Walllet Categories",
+      "list": [
+        {
+          "id": 1,
+          "name": "Car",
+          "color": "#ffffff"
+        },
+        {
+          "id": 2,
+          "name": "Bank",
+          "color": "#ffffff"
+        },
+        {
+          "id": 3,
+          "name": "Business",
+          "color": "#ffffff"
+        },
+        {
+          "id": 4,
+          "name": "Home",
+          "color": "#ffffff"
+        },
+        {
+          "id": 5,
+          "name": "Education",
+          "color": "#ffffff"
+        },
+        {
+          "id": 6,
+          "name": "Gifts",
+          "color": "#ffffff"
+        },
+        {
+          "id": 7,
+          "name": "Machinery",
+          "color": "#ffffff"
+        },
+        {
+          "id": 8,
+          "name": "Traveling",
+          "color": "#ffffff"
+        },
+        {
+          "id": 9,
+          "name": "Fashion",
+          "color": "#ffffff"
+        }
+      ],
+      "id": 3
+    },
+    {
+      "walletId": 5,
+      "title": "last test Categories",
+      "list": null,
+      "id": 4
+    },
+    {
+      "walletId": 6,
+      "title": "new Categories",
+      "list": null,
+      "id": 5
+    }
+  ],
   "debts": [],
-  "budgets": []
+  "budgets": [],
+  "initialCategories": [
+    {
+      "id": 1,
+      "name": "Car",
+      "color": "#ffffff"
+    },
+    {
+      "id": 2,
+      "name": "Bank",
+      "color": "#ffffff"
+    },
+    {
+      "id": 3,
+      "name": "Business",
+      "color": "#ffffff"
+    },
+    {
+      "id": 4,
+      "name": "Home",
+      "color": "#ffffff"
+    },
+    {
+      "id": 5,
+      "name": "Education",
+      "color": "#ffffff"
+    },
+    {
+      "id": 6,
+      "name": "Gifts",
+      "color": "#ffffff"
+    },
+    {
+      "id": 7,
+      "name": "Machinery",
+      "color": "#ffffff"
+    },
+    {
+      "id": 8,
+      "name": "Traveling",
+      "color": "#ffffff"
+    },
+    {
+      "id": 9,
+      "name": "Fashion",
+      "color": "#ffffff"
+    }
+  ]
 }

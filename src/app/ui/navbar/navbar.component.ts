@@ -4,6 +4,7 @@ import { WalletModel } from 'src/app/shared/models/wallet.model';
 import { WalletProvider } from 'src/app/shared/providers/wallet.provider';
 import { FormControl } from '@angular/forms';
 import { NbDialogService } from '@nebular/theme';
+import { AddWalletComponent } from '../add-wallet/add-wallet.component';
 
 @Component({
     selector: 'app-navbar',
@@ -43,9 +44,14 @@ export class NavBarComponent implements OnInit {
             .subscribe(res => {
                 this.wallets = res;
             });
-        console.log(this.myWallet)
+        console.log(this.myWallet);
     }
 
     addNewWallet() {
+        // seTimeout due to angular bug with change detection during view creation
+        setTimeout(() => {
+            this.dialogService.open(AddWalletComponent)
+                .onClose.subscribe(() => this.ngOnInit());
+        });
     }
 }

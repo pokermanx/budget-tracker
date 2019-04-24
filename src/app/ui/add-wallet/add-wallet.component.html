@@ -1,0 +1,50 @@
+<nb-card [size]="'medium'" *ngIf="isLoaded">
+    <nb-card-header>Add new Wallet</nb-card-header>
+    <nb-card-body>
+        <form [formGroup]="walletForm" (ngSubmit)="onSubmit()" class="form-container">
+            <div class="form-input-block">
+                <input type="text" nbInput fullWidth fieldSize="medium" placeholder="Name" formControlName="title" required>
+                <app-validation-messages *ngIf="walletForm.controls.title.invalid && walletForm.controls.title.touched" [errors]="walletForm.controls.title.errors"></app-validation-messages>
+            </div>
+            <div class="form-input-block">
+                <nb-select class="wallet-select" formControlName="period">
+                    <nb-option *ngFor="let period of walletPeriod | keyvalue | slice:0:5" [value]="+period.key">
+                        {{ period.value }}
+                    </nb-option>
+                </nb-select>
+            </div>
+            <div class="form-input-block">
+                <nb-select class="wallet-select" formControlName="currency">
+                    <nb-option *ngFor="let currency of currencies | keyvalue | slice:0:4" [value]="+currency.key">
+                        {{ currency.value }}
+                    </nb-option>
+                </nb-select>
+            </div>
+            <div class="form-input-block__last">
+                <nb-select class="wallet-select" formControlName="categories" placeholder="Without Categories" [selected]="null">
+                    <nb-option [value]="null">
+                        Without Categories
+                    </nb-option>
+                    <nb-option [value]="defaultCategories">
+                        Default Categories
+                    </nb-option>
+                    <nb-option *ngFor="let walletCategories of walletsCategories" [value]="walletCategories.list">
+                        {{ walletCategories.title }}
+                    </nb-option>
+                </nb-select>
+            </div>
+        </form>
+    </nb-card-body>
+    <nb-card-footer>
+        <div class="buttons-container">
+            <button class="form-button" nbButton hero status="danger" (click)="closeDialog()">
+                Cancel
+            </button>
+            <button class="form-button form-button--success" nbButton hero status="success"
+                [disabled]="walletForm.invalid" (click)="onSubmit()"
+            >
+                Add New
+            </button>
+        </div>
+    </nb-card-footer>
+</nb-card>
