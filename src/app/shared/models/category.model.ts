@@ -7,5 +7,8 @@ export class CategoryModel {
 export class WalletCategoriesModel {
     walletId: number;
     title: string;
-    list: CategoryModel[];
+    list: {
+        incomeCategories: CategoryModel[];
+        outcomeCategories: CategoryModel[];
+    };
 }

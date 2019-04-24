@@ -34,6 +34,16 @@ export class WalletProvider {
         this.currentWallet = wallet;
     }
 
+    updateCurrentWallet() {
+        return new Promise((resolve, reject) => {
+            this.loadWallet()
+                .subscribe((res: WalletModel[]) => {
+                    [this.currentWallet] = res;
+                    resolve(true);
+                });
+        });
+    }
+
     init() {
         this.loadDefaultCategories()
             .subscribe((categories: CategoryModel[]) => this.defaultCategories = categories);
