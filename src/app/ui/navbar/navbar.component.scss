@@ -26,18 +26,26 @@
 	}
 }
 
-.wallet-status {
-	width: 400px;
-	height: 100%;
-	border-radius: 0;
-}
 .wallet-select {
 	width: 200px;
 	/deep/ & button {
 		outline: none;
 	}
 }
+.wallet-status {
+	display: flex;
+	width: 400px;
+	height: 100%;
+	border-radius: 0;
+}
 
-// .wallet-option {
-// 	font-family: "Segou UI, Helvetica";
-// }
+.add-transaction {
+	border-radius: 0;
+	padding-bottom: 23px;
+	outline: none;
+	padding-left: 28px;
+	display: flex;
+	align-items: center;
+	font-size: 50px;
+	width: 100px;
+}

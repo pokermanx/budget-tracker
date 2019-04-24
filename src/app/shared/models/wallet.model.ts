@@ -18,6 +18,13 @@ export enum Currency {
     USD = 4
 }
 
+export enum CurrencySymbol {
+    '₴' = 1,
+    '₽' = 2,
+    '€' = 3,
+    '$' = 4
+}
+
 export class WalletModel {
     id: number;
     period: WalletPeriod;

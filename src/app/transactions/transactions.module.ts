@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { TransactionsRoutingModule } from './transactions-routing.module';
+import { NbDialogModule } from '@nebular/theme';
 
 @NgModule({
     declarations: [
@@ -11,6 +12,7 @@ import { TransactionsRoutingModule } from './transactions-routing.module';
     imports: [
         CommonModule,
         RouterModule,
+        NbDialogModule,
         TransactionsRoutingModule
     ],
 })

@@ -5,6 +5,7 @@ import { WalletProvider } from 'src/app/shared/providers/wallet.provider';
 import { FormControl } from '@angular/forms';
 import { NbDialogService } from '@nebular/theme';
 import { AddWalletComponent } from '../add-wallet/add-wallet.component';
+import { AddTransactionComponent } from '../add-transaction/add-transaction.component';
 
 @Component({
     selector: 'app-navbar',
@@ -52,6 +53,13 @@ export class NavBarComponent implements OnInit {
         setTimeout(() => {
             this.dialogService.open(AddWalletComponent)
                 .onClose.subscribe(() => this.ngOnInit());
+        });
+    }
+
+    addTransaction() {
+        setTimeout(() => {
+            this.dialogService.open(AddTransactionComponent)
+                .onClose.subscribe();
         });
     }
 }

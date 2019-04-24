@@ -1,0 +1,36 @@
+.transaction-tabs {
+	/deep/ & ul {
+		& li {
+			& a {
+				outline: none;
+			}
+		}
+	}
+}
+
+.sum-input-wrapper {
+	display: flex;
+}
+
+.sum-input {
+	border-top-right-radius: 0 !important;
+	border-bottom-right-radius: 0 !important;
+}
+
+.currency-select {
+	/deep/ button {
+        outline: none;
+		border-top-left-radius: 0;
+		border-bottom-left-radius: 0;
+        height: 100%;
+        &::after {
+            display: none;
+        }
+	}
+}
+
+::ng-deep {
+	nb-card {
+		width: auto !important;
+	}
+}

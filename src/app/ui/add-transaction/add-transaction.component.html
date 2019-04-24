@@ -1,0 +1,26 @@
+<nb-card [size]="'medium'">
+    <nb-card-header>Add Transaction</nb-card-header>
+    <nb-card-body>
+        <form [formGroup]="sumForm">
+            <div class="sum-input-wrapper">
+                <input class="sum-input" formControlName="value" type="text" nbInput placeholder="0">
+                <nb-select class="currency-select" formControlName="currency" size="'medium'">
+                    <nb-select-label>
+                        {{ currencySymbols[sumForm.controls.currency.value] }}
+                    </nb-select-label>
+                    <nb-option *ngFor="let currency of currencies | keyvalue | slice:0:4" [value]="+currency.key">
+                        {{ currency.value }}
+                    </nb-option>
+                </nb-select>
+            </div>
+        </form>
+        <nb-tabset class="transaction-tabs">
+            <nb-tab tabTitle="Income">
+                <p>List of <strong>users</strong>.</p>
+            </nb-tab>
+            <nb-tab tabTitle="Outcome">
+                <p>List of <strong>orders</strong>.</p>
+            </nb-tab>
+        </nb-tabset>
+    </nb-card-body>
+</nb-card>

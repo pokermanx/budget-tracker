@@ -25,4 +25,8 @@ export class CategoriesService {
 
         return this.http.post(`${environment.apiEndpoint}/walletCategories`, request);
     }
+
+    getIncomeCategories() {
+        return this.http.get(`${environment.apiEndpoint}/walletCategories`);
+    }
 }

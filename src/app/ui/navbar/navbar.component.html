@@ -27,6 +27,9 @@
             <button nbButton hero status="success" class="wallet-status">Balance:
                 {{myWallet ? myWallet.balance : 0}}₴
             </button>
+            <button nbButton hero status="success" class="add-transaction" (click)="addTransaction()">
+                +
+            </button>
         </nb-layout-column>
     </nb-layout-header>
     <nb-layout-column>

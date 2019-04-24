@@ -8,17 +8,24 @@ import {
     NbSelectModule,
     NbDialogModule,
     NbInputModule,
-    NbThemeModule,
-    NbOverlayModule
+    NbOverlayModule,
+    NbTabsetModule
 } from '@nebular/theme';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AddWalletComponent } from '../add-wallet/add-wallet.component';
 import { ValidationMessagesComponent } from '../validation-messages/validation-messages.component';
+import { TransactionsModule } from 'src/app/transactions/transactions.module';
+import { AddTransactionComponent } from '../add-transaction/add-transaction.component';
 
 @NgModule({
-    declarations: [NavBarComponent, AddWalletComponent, ValidationMessagesComponent],
+    declarations: [
+        NavBarComponent,
+        AddWalletComponent,
+        ValidationMessagesComponent,
+        AddTransactionComponent
+    ],
     imports: [
         CommonModule,
         FormsModule,
@@ -31,9 +38,10 @@ import { ValidationMessagesComponent } from '../validation-messages/validation-m
         NbDialogModule.forRoot(),
         NbInputModule,
         NbOverlayModule,
+        NbTabsetModule,
         RouterModule
     ],
     exports: [NavBarComponent, ValidationMessagesComponent],
-    entryComponents: [AddWalletComponent]
+    entryComponents: [AddWalletComponent, AddTransactionComponent]
 })
 export class UiModule {}
