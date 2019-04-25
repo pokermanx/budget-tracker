@@ -10,16 +10,17 @@ import {
     NbInputModule,
     NbOverlayModule,
     NbTabsetModule,
-    NbDatepickerModule
+    NbDatepickerModule,
+    NbPopoverModule
 } from '@nebular/theme';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AddWalletComponent } from './add-wallet/add-wallet.component';
 import { ValidationMessagesComponent } from './validation-messages/validation-messages.component';
-import { TransactionsModule } from 'src/app/transactions/transactions.module';
 import { AddTransactionComponent } from './add-transaction/add-transaction.component';
 import { NbMomentDateModule } from '@nebular/moment';
+import { ColorPickerModule } from 'ngx-color-picker';
 
 @NgModule({
     declarations: [
@@ -43,6 +44,8 @@ import { NbMomentDateModule } from '@nebular/moment';
         NbTabsetModule,
         NbDatepickerModule,
         NbMomentDateModule,
+        NbPopoverModule,
+        ColorPickerModule,
         RouterModule
     ],
     exports: [NavBarComponent, ValidationMessagesComponent],

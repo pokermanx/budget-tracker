@@ -27,6 +27,7 @@
     "moment": "^2.24.0",
     "nebular-icons": "^1.1.0",
     "ng2-charts": "^2.2.2",
+    "ngx-color-picker": "^7.5.0",
     "rxjs": "~6.3.3",
     "tslib": "^1.9.0",
     "zone.js": "~0.8.26"

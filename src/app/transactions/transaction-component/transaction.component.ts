@@ -70,9 +70,9 @@ export class TransactionsComponent implements OnInit {
         if (+id === -1) {
             return '#ffffff';
         } else if (type === 'income') {
-            return this.walletCategories.list.incomeCategories.find(x => x.id === id).color;
+            return this.walletCategories.list.incomeCategories.find(x => +x.id === +id).color;
         } else {
-            return this.walletCategories.list.outgoingCategories.find(x => x.id === id).color;
+            return this.walletCategories.list.outgoingCategories.find(x => +x.id === +id).color;
         }
     }
 
