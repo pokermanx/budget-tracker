@@ -69,3 +69,13 @@
     display: flex;
     align-items: center;
 }
+
+.date-stamp {
+    display: flex;
+    justify-content: flex-end;
+    padding: 10px 0;
+}
+
+.desc-container {
+    overflow: hidden;
+}

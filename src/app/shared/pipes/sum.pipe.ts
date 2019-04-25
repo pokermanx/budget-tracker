@@ -2,7 +2,8 @@ import { Pipe, PipeTransform } from '@angular/core';
 import { TransactionModel } from '../models/transaction.model';
 
 @Pipe({
-    name: 'sumPipe'
+    name: 'sumPipe',
+    pure: false
 })
 
 export class SumPipe implements PipeTransform {

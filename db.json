@@ -112,7 +112,7 @@
       "period": 3,
       "title": "test",
       "lastExpanses": {},
-      "balance": 67,
+      "balance": 912,
       "currency": 1,
       "active": true,
       "id": 13
@@ -416,6 +416,119 @@
       "category": 3,
       "walletId": 13,
       "id": 30
+    },
+    {
+      "date": "04/25/2019",
+      "type": "income",
+      "value": "100",
+      "currency": 1,
+      "category": 2,
+      "walletId": 13,
+      "id": 31
+    },
+    {
+      "date": "04/25/2019",
+      "type": "outgoing",
+      "value": "100",
+      "currency": 1,
+      "category": -1,
+      "walletId": 13,
+      "id": 32
+    },
+    {
+      "date": "04/25/2019",
+      "type": "income",
+      "value": "12",
+      "description": " new",
+      "currency": 1,
+      "category": 1,
+      "walletId": 13,
+      "id": 33
+    },
+    {
+      "date": "04/24/2019",
+      "type": "outgoing",
+      "value": "200",
+      "description": "me",
+      "currency": 1,
+      "category": 3,
+      "walletId": 13,
+      "id": 34
+    },
+    {
+      "date": "04/25/2019",
+      "type": "outgoing",
+      "value": "20",
+      "description": "ssss",
+      "currency": 1,
+      "category": 7,
+      "walletId": 13,
+      "id": 35
+    },
+    {
+      "date": "04/25/2019",
+      "type": "outgoing",
+      "value": "2",
+      "currency": 1,
+      "category": -1,
+      "walletId": 13,
+      "id": 36
+    },
+    {
+      "date": "04/25/2019",
+      "type": "income",
+      "value": "111",
+      "currency": 1,
+      "category": 2,
+      "walletId": 13,
+      "id": 37
+    },
+    {
+      "date": "04/25/2019",
+      "type": "outgoing",
+      "value": "2",
+      "currency": 1,
+      "category": -1,
+      "walletId": 13,
+      "id": 38
+    },
+    {
+      "date": "04/25/2019",
+      "type": "income",
+      "value": "1000",
+      "currency": 1,
+      "category": 1,
+      "walletId": 13,
+      "id": 39
+    },
+    {
+      "date": "04/25/2019",
+      "type": "outgoing",
+      "value": "22",
+      "currency": 1,
+      "category": -1,
+      "walletId": 13,
+      "id": 40
+    },
+    {
+      "date": "04/25/2019",
+      "type": "outgoing",
+      "value": "22",
+      "description": "gbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+      "currency": 1,
+      "category": -1,
+      "walletId": 13,
+      "id": 41
+    },
+    {
+      "date": "04/25/2019",
+      "type": "outgoing",
+      "value": "10",
+      "description": "40337:29)\n    at Object.eval [as updateRenderer] (ng:///TransactionsModule/TransactionsComponent.ngfactory.js:60:25)\n    at Object.debugUpdateRenderer [as updateRenderer] (http://localhost:4200/vendor.js:81489:21)",
+      "currency": 1,
+      "category": -1,
+      "walletId": 13,
+      "id": 42
     }
   ],
   "walletCategories": [

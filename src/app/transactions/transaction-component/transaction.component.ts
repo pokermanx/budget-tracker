@@ -3,43 +3,59 @@ import { TransactionsService } from 'src/app/shared/services/transactions.servic
 import { TransactionModel } from 'src/app/shared/models/transaction.model';
 import { CategoriesProvider } from 'src/app/shared/providers/categories.provider';
 import { WalletCategoriesModel } from 'src/app/shared/models/category.model';
-import { CurrencySymbol } from 'src/app/shared/models/wallet.model';
+import { CurrencySymbol, WalletModel } from 'src/app/shared/models/wallet.model';
 import { finalize } from 'rxjs/operators';
+import { WalletProvider } from 'src/app/shared/providers/wallet.provider';
+import * as moment from 'moment';
 
 @Component({
     selector: 'app-transactions',
     templateUrl: './transaction.component.html',
-    styleUrls: ['./transaction.component.scss']
+    styleUrls: ['./transaction.component.scss'],
 })
 export class TransactionsComponent implements OnInit {
 
     isLoaded = false;
 
-    incomeTransactions = [];
-    outgoingTransactions = [];
+    incomeTransactions: TransactionModel[];
+    outgoingTransactions: TransactionModel[];
 
     walletCategories: WalletCategoriesModel;
+    currWallet: WalletModel;
+
+    moment = moment;
 
     walletCurrency = CurrencySymbol;
 
     constructor(
         private transactionsService: TransactionsService,
-        private categoriesProvider: CategoriesProvider
-    ) { }
+        private categoriesProvider: CategoriesProvider,
+        private walletProvider: WalletProvider
+    ) {
+        walletProvider.getWalletSub()
+            .subscribe(wallet => {
+                this.currWallet = wallet;
+                this.getCategories();
+                this.getTransactions();
+            });
+    }
 
     ngOnInit() {
-        this.getCategories();
+    }
+
+    getTransactions() {
+        this.incomeTransactions = [];
+        this.outgoingTransactions = [];
         this.transactionsService.getTransactionsList()
             .pipe(finalize(() => this.isLoaded = true))
             .subscribe((res: TransactionModel[]) => {
                 res.map(transaction => {
                     if (transaction.type === 'income') {
-                        this.incomeTransactions.push(transaction);
+                        this.incomeTransactions.unshift(transaction);
                     } else {
-                        this.outgoingTransactions.push(transaction);
+                        this.outgoingTransactions.unshift(transaction);
                     }
                 });
-                console.log(this.incomeTransactions, this.outgoingTransactions)
             });
     }
 
@@ -47,7 +63,6 @@ export class TransactionsComponent implements OnInit {
         this.categoriesProvider.loadWalletsCategories()
             .subscribe((res: WalletCategoriesModel[]) => {
                 [this.walletCategories] = res;
-                console.log(this.walletCategories)
             });
     }
 

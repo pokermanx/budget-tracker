@@ -5,12 +5,15 @@
                 Outcome:
             </span>
             <span class="title-value outgoing">
-                {{ outgoingTransactions | sumPipe }}
+                {{ (outgoingTransactions | sumPipe) + ' ' + walletCurrency[currWallet.currency] }}
             </span>
         </div>
         <div class="list-wrapper outcome-column">
             <nb-list>
                 <nb-list-item class="transaction-row" *ngFor="let transaction of outgoingTransactions">
+                    <div class="date-stamp">
+                        {{ moment(transaction.date).fromNow() }}
+                    </div>
                     <nb-card>
                         <nb-card-header class="transaction-tile outgoing">
                             {{ transaction.value + ' ' + walletCurrency[transaction.currency] }}
@@ -19,13 +22,12 @@
                             </span>
                         </nb-card-header>
                         <nb-card-body class="category-field"
-                            [ngStyle]="{'border-color': getColor(transaction.category, 'income')}"
-                            [ngClass]="{'no-bottom-borders': transaction.description}"    
-                        >
-                            {{ getCategory(transaction.category, 'income') }}
+                            [ngStyle]="{'border-color': getColor(transaction.category, 'outgoing')}"
+                            [ngClass]="{'no-bottom-borders': transaction.description}">
+                            {{ getCategory(transaction.category, 'outgoing') }}
                         </nb-card-body>
-                        <nb-card-footer *ngIf="transaction.description">
-                            {{ transaction.description }}
+                        <nb-card-footer *ngIf="transaction.description" class="desc-container">
+                            Note: {{ transaction.description }}
                         </nb-card-footer>
                     </nb-card>
                 </nb-list-item>
@@ -38,12 +40,15 @@
                 Income:
             </span>
             <span class="title-value income">
-                {{ incomeTransactions | sumPipe }}
+                {{ (incomeTransactions | sumPipe) + ' ' + walletCurrency[currWallet.currency] }}
             </span>
         </div>
         <div class="list-wrapper income-column">
             <nb-list>
                 <nb-list-item class="transaction-row" *ngFor="let transaction of incomeTransactions">
+                    <div class="date-stamp">
+                        {{ moment(transaction.date).fromNow() }}
+                    </div>
                     <nb-card>
                         <nb-card-header class="transaction-tile income">
                             {{ transaction.value + ' ' + walletCurrency[transaction.currency] }}
@@ -52,13 +57,12 @@
                             </span>
                         </nb-card-header>
                         <nb-card-body class="category-field"
-                            [ngStyle]="{'border-color': getColor(transaction.category, 'outgoing')}"
-                            [ngClass]="{'no-bottom-borders': transaction.description}"                            
-                        >
-                            {{ getCategory(transaction.category, 'outgoing') }}
+                            [ngStyle]="{'border-color': getColor(transaction.category, 'income')}"
+                            [ngClass]="{'no-bottom-borders': transaction.description}">
+                            {{ getCategory(transaction.category, 'income') }}
                         </nb-card-body>
-                        <nb-card-footer *ngIf="transaction.description">
-                            {{ transaction.description }}
+                        <nb-card-footer *ngIf="transaction.description" class="desc-container">
+                            Note: {{ transaction.description }}
                         </nb-card-footer>
                     </nb-card>
                 </nb-list-item>
