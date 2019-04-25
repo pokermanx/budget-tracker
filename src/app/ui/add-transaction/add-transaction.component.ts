@@ -7,7 +7,7 @@ import { finalize } from 'rxjs/operators';
 import * as moment from 'moment';
 import { TransactionModel } from 'src/app/shared/models/transaction.model';
 import { CategoriesService } from 'src/app/shared/services/categories.service';
-import { NbDialogRef } from '@nebular/theme';
+import { NbDialogRef, NbPosition } from '@nebular/theme';
 import { TransactionsService } from 'src/app/shared/services/transactions.service';
 import { WalletProvider } from 'src/app/shared/providers/wallet.provider';
 
@@ -23,6 +23,7 @@ export class AddTransactionComponent implements OnInit {
     moment = moment;
 
     sumForm: FormGroup;
+    catName = new FormControl();
 
     selectedOItem = -1;
     selectedIItem = -1;
@@ -38,11 +39,15 @@ export class AddTransactionComponent implements OnInit {
     currencySymbols = CurrencySymbol;
     walletCategories: WalletCategoriesModel;
 
+    popoverPos = NbPosition.BOTTOM;
+    color = '#ffffff';
+
     constructor(
         private categoriesProvider: CategoriesProvider,
         private transactionService: TransactionsService,
         private dialogRef: NbDialogRef<AddTransactionComponent>,
-        private walletProvider: WalletProvider
+        private walletProvider: WalletProvider,
+        private categoriesService: CategoriesService
     ) {
         categoriesProvider.loadWalletsCategories()
             .pipe(finalize(() => this.isLoaded = true))
@@ -63,6 +68,8 @@ export class AddTransactionComponent implements OnInit {
             ]),
             currency: new FormControl(1),
         });
+
+        this.catName.valueChanges.subscribe(val => console.log(val, this.color))
     }
 
     onSubmit() {
@@ -109,5 +116,26 @@ export class AddTransactionComponent implements OnInit {
 
     closeDialog(status: boolean) {
         this.dialogRef.close(status);
+    }
+
+    addCategory() {
+        if (this.type === 'income') {
+            const lastId = Math.max.apply(null, this.walletCategories.list.incomeCategories.map(el => +el.id));
+            this.walletCategories.list.incomeCategories.unshift({
+                id: lastId + 1,
+                name: this.catName.value,
+                color: this.color
+            });
+        } else {
+            const lastId = Math.max.apply(null, this.walletCategories.list.outgoingCategories.map(el => +el.id));
+            this.walletCategories.list.outgoingCategories.unshift({
+                id: lastId + 1,
+                name: this.catName.value,
+                color: this.color
+            });
+        }
+
+        this.categoriesService.updateWalletCategories(this.walletCategories.list)
+            .subscribe(res => console.log(res))
     }
 }
