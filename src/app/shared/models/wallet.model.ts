@@ -30,7 +30,7 @@ export class WalletModel {
     period: WalletPeriod;
     title: string;
     lastExpanses: any;
-    balance: string;
+    balance: number;
     currency: Currency;
     active: boolean;
 }

@@ -22,39 +22,46 @@ export class NavBarComponent implements OnInit {
         private walletProvider: WalletProvider,
         private walletService: WalletService,
         private dialogService: NbDialogService
-    ) {
-        this.initControls();
-    }
+    ) { }
 
     initControls() {
         this.walletControl.valueChanges.subscribe(val => {
             if (val) {
                 this.walletService.changeWalletStatus(val)
                     // @ts-ignore
-                    .subscribe((res: WalletModel) => {
-                        this.walletProvider.changeCurrentWallet(res);
-                        this.ngOnInit();
+                    .subscribe(() => {
+                        this.walletProvider.updateCurrentWallet()
+                            .then(() => this.getWalletsList());
                     });
             }
         });
     }
 
     ngOnInit() {
-        this.myWallet = this.walletProvider.getWallet();
+        this.initControls();
+        this.getWalletsList();
+        this.walletProvider.getWalletSub()
+            .subscribe((wallet: WalletModel) => {
+                this.myWallet = wallet;
+                console.log(this.myWallet);
+            });
+    }
+
+    getWalletsList() {
         this.walletService.getWallets()
             .subscribe(res => {
                 this.wallets = res;
             });
-        console.log(this.myWallet);
     }
 
     addNewWallet() {
         // seTimeout due to angular bug with change detection during view creation
         setTimeout(() => {
             this.dialogService.open(AddWalletComponent)
-                .onClose.subscribe(() => {
-                    this.walletProvider.updateCurrentWallet()
-                        .then(() => this.ngOnInit());
+                .onClose.subscribe(status => {
+                    if (status) {
+                        this.getWalletsList();
+                    }
                 });
         });
     }

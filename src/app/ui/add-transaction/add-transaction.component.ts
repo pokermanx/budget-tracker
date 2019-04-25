@@ -8,6 +8,8 @@ import * as moment from 'moment';
 import { TransactionModel } from 'src/app/shared/models/transaction.model';
 import { CategoriesService } from 'src/app/shared/services/categories.service';
 import { NbDialogRef } from '@nebular/theme';
+import { TransactionsService } from 'src/app/shared/services/transactions.service';
+import { WalletProvider } from 'src/app/shared/providers/wallet.provider';
 
 @Component({
     selector: 'app-add-transaction',
@@ -38,8 +40,9 @@ export class AddTransactionComponent implements OnInit {
 
     constructor(
         private categoriesProvider: CategoriesProvider,
-        private categoriesService: CategoriesService,
-        private dialogRef: NbDialogRef<AddTransactionComponent>
+        private transactionService: TransactionsService,
+        private dialogRef: NbDialogRef<AddTransactionComponent>,
+        private walletProvider: WalletProvider
     ) {
         categoriesProvider.loadWalletsCategories()
             .pipe(finalize(() => this.isLoaded = true))
@@ -77,8 +80,10 @@ export class AddTransactionComponent implements OnInit {
             this.request.category = this.selectedIItem;
         }
 
-        this.categoriesService.addTransaction(this.request)
-            .subscribe(() => this.closeDialog(true));
+        this.transactionService.addTransaction(this.request)
+            .subscribe(() => {
+                this.walletProvider.updateCurrentWallet().then(() => this.closeDialog(true));
+            });
     }
 
     updateSelected(id: number, type: string) {

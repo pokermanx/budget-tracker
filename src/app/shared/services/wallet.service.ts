@@ -23,8 +23,7 @@ export class WalletService {
 
     changeWalletStatus(id: number) {
         return this.http.patch(`${environment.apiEndpoint}/wallets/${this.walletProvider.getWallet().id}`, { active: false })
-            .pipe(mergeMap(res => {
-                console.log(res)
+            .pipe(mergeMap(() => {
                 return this.http.patch<WalletModel>(`${environment.apiEndpoint}/wallets/${id}`, { active: true });
             })
         );
@@ -47,5 +46,17 @@ export class WalletService {
             .pipe(mergeMap((newWallet: WalletModel) => {
                 return this.categoriesService.setWalletCategories(categories, newWallet.id, newWallet.title);
             }));
+    }
+
+    updateBalance(value: number, type: 'income' | 'outgoing') {
+        const currWallet = this.walletProvider.getWallet();
+        let balance = +currWallet.balance;
+        if (type === 'income') {
+            balance += +value;
+        } else {
+            balance -= +value;
+        }
+
+        return this.http.patch(`${environment.apiEndpoint}/wallets/${currWallet.id}`, {balance});
     }
 }

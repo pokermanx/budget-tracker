@@ -3,7 +3,7 @@ export class TransactionModel {
     walletId: number;
     date: string;
     type: 'income' | 'outgoing';
-    value: string;
+    value: number;
     description?: string;
     category: string;
     currency: string;

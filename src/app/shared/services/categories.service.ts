@@ -32,9 +32,4 @@ export class CategoriesService {
     getIncomeCategories() {
         return this.http.get(`${environment.apiEndpoint}/walletCategories`);
     }
-
-    addTransaction(request: TransactionModel) {
-        request.walletId = this.walletProvider.getWallet().id;
-        return this.http.post(`${environment.apiEndpoint}/transactions`, request);
-    }
 }

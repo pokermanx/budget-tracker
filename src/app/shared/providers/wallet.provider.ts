@@ -2,12 +2,12 @@ import { Injectable } from '@angular/core';
 import { WalletModel } from '../models/wallet.model';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
-import { CategoryModel } from '../models/category.model';
+import { BehaviorSubject, Subject } from 'rxjs';
 
 @Injectable()
 export class WalletProvider {
 
-    private currentWallet: WalletModel;
+    private currentWallet: BehaviorSubject<WalletModel>;
 
     constructor(
         private http: HttpClient
@@ -17,19 +17,24 @@ export class WalletProvider {
         return this.http.get<WalletModel[]>(`${environment.apiEndpoint}/wallets?active=true`);
     }
 
-    getWallet() {
+    getWalletSub() {
         return this.currentWallet;
     }
 
+    getWallet() {
+        return this.currentWallet.getValue();
+    }
+
     changeCurrentWallet(wallet: WalletModel) {
-        this.currentWallet = wallet;
+        this.currentWallet.next(wallet);
     }
 
     updateCurrentWallet() {
-        return new Promise((resolve, reject) => {
+        return new Promise((resolve) => {
             this.loadWallet()
                 .subscribe((res: WalletModel[]) => {
-                    [this.currentWallet] = res;
+                    const [dec] = res;
+                    this.currentWallet.next(dec);
                     resolve(true);
                 });
         });
@@ -39,7 +44,8 @@ export class WalletProvider {
         return new Promise((resolve, reject) => {
             this.loadWallet()
                 .subscribe((res: WalletModel[]) => {
-                    [this.currentWallet] = res;
+                    const [dec] = res;
+                    this.currentWallet = new BehaviorSubject<WalletModel>(dec);
                     resolve(true);
                 });
         });

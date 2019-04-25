@@ -60,11 +60,14 @@ export class AddWalletComponent implements OnInit {
         this.walletService.addNewWallet(this.walletForm.value)
             .subscribe((res: WalletCategoriesModel) => {
                 this.walletService.changeWalletStatus(res.walletId)
-                    .subscribe(() => this.closeDialog());
+                    .subscribe(() => {
+                        this.walletProvider.updateCurrentWallet()
+                            .then(() => this.closeDialog(true));
+                    });
             });
     }
 
-    closeDialog() {
-        this.dialogRef.close();
+    closeDialog(status: boolean) {
+        this.dialogRef.close(status);
     }
 }

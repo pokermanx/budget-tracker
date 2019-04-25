@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { NavBarComponent } from './navbar.component';
+import { NavBarComponent } from './navbar/navbar.component';
 import {
     NbLayoutModule,
     NbActionsModule,
@@ -15,10 +15,10 @@ import {
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { AddWalletComponent } from '../add-wallet/add-wallet.component';
-import { ValidationMessagesComponent } from '../validation-messages/validation-messages.component';
+import { AddWalletComponent } from './add-wallet/add-wallet.component';
+import { ValidationMessagesComponent } from './validation-messages/validation-messages.component';
 import { TransactionsModule } from 'src/app/transactions/transactions.module';
-import { AddTransactionComponent } from '../add-transaction/add-transaction.component';
+import { AddTransactionComponent } from './add-transaction/add-transaction.component';
 import { NbMomentDateModule } from '@nebular/moment';
 
 @NgModule({
