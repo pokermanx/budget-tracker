@@ -529,6 +529,24 @@
       "category": -1,
       "walletId": 13,
       "id": 42
+    },
+    {
+      "date": "04/25/2019",
+      "type": "income",
+      "value": "200",
+      "currency": 1,
+      "category": -1,
+      "walletId": 13,
+      "id": 43
+    },
+    {
+      "date": "04/25/2019",
+      "type": "outgoing",
+      "value": "200",
+      "currency": 1,
+      "category": -1,
+      "walletId": 13,
+      "id": 44
     }
   ],
   "walletCategories": [
