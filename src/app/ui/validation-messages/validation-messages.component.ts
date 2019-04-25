@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { FormControl } from '@angular/forms';
 
 @Component({
     selector: 'app-validation-messages',
@@ -7,7 +8,7 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class ValidationMessagesComponent implements OnInit {
 
-    @Input() errors;
+    @Input() control: FormControl;
 
     errorMessage: string;
 
@@ -16,9 +17,16 @@ export class ValidationMessagesComponent implements OnInit {
     // TODO
 
     ngOnInit() {
-        if (this.errors.required) {
+        this.setError();
+        this.control.valueChanges.subscribe(() => {
+            this.setError();
+        });
+    }
+
+    setError() {
+        if (this.control.errors && this.control.errors.required) {
             this.errorMessage = 'This field is required.';
-        } else if (this.errors.pattern) {
+        } else if (this.control.errors && this.control.errors.pattern) {
             this.errorMessage = 'Invalid parameters';
         }
     }

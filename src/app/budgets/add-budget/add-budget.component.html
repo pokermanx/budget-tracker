@@ -2,13 +2,46 @@
     <nb-card-header>Add new budget</nb-card-header>
     <nb-card-body>
         <form [formGroup]="addBudgetForm">
-            <input type="text" nbInput fullWidth fieldSize="medium" placeholder="Name">
-            <input type="text" nbInput fullWidth fieldSize="medium" placeholder="Name">
-            <nb-select formControlName="period">
+            <div class="form-input">
+                <input formControlName="name" type="text" nbInput fullWidth fieldSize="medium" placeholder="Name">
+                <app-validation-messages *ngIf="addBudgetForm.controls.name.invalid && addBudgetForm.controls.name.touched"
+                    [control]="addBudgetForm.controls.name"></app-validation-messages>
+            </div>
+            <div class="form-input">
+                <input formControlName="value" type="text" nbInput fullWidth fieldSize="medium" placeholder="Value">
+                <app-validation-messages *ngIf="addBudgetForm.controls.value.invalid && addBudgetForm.controls.value.touched"
+                    [control]="addBudgetForm.controls.value"></app-validation-messages>
+            </div>
+            <nb-select formControlName="period" class="form-input">
                 <nb-option *ngFor="let period of periods | keyvalue | slice:0:5" [value]="+period.key">
                     {{ period.value }}
                 </nb-option>
             </nb-select>
+            <ul class="categories-list">
+                <li class="category-tile category-tile--no"
+                    [ngClass]="{'selected-category': selectedItems.includes(-1)}" (click)="updateSelected(-1)">
+                    No Category
+                </li>
+                <li *ngIf="categoriesList" class="categories-list">
+                    <div class="category-tile" *ngFor="let category of categoriesList"
+                        [ngStyle]="{'border-color': category.color}"
+                        [ngClass]="{'selected-category': selectedItems.includes(category.id)}"
+                        (click)="updateSelected(category.id)">
+                        {{ category.name }}
+                    </div>
+                </li>
+            </ul>
         </form>
     </nb-card-body>
+    <nb-card-footer>
+        <div class="buttons-container">
+            <button class="form-button" nbButton hero status="danger" (click)="closeDialog(false)">
+                Cancel
+            </button>
+            <button class="form-button form-button--success" nbButton hero status="success" (click)="onSubmit()"
+                [disabled]="addBudgetForm.invalid">
+                Add New
+            </button>
+        </div>
+    </nb-card-footer>
 </nb-card>

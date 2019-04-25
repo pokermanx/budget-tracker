@@ -1,0 +1,59 @@
+@import "../../../styles.scss";
+
+.form-input {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.category-tile {
+	width: auto;
+	border: nb-theme(select-border-width) solid nb-theme(card-separator);
+	border-radius: nb-theme(btn-border-radius);
+	margin: 5px 10px;
+	padding: 10px 20px;
+	white-space: nowrap;
+	cursor: pointer;
+
+	&--no {
+		background: repeating-linear-gradient(
+			45deg,
+			nb-theme(select-bg),
+			nb-theme(select-bg) 10px,
+			nb-theme(card-separator) 10px,
+			nb-theme(card-separator) 20px
+		);
+	}
+}
+.category-tile-add {
+	display: flex;
+	align-items: center;
+	cursor: pointer;
+}
+
+.categories-list {
+	list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+	align-items: center;
+    width: 600px;
+    height: 100%;
+    overflow: auto;
+}
+
+.selected-category {
+	filter: brightness(150%);
+	box-shadow: nb-theme(menu-submenu-active-shadow);
+}
+
+.buttons-container {
+	display: flex;
+	justify-content: flex-end;
+}
+
+.form-button {
+	outline: none;
+
+	&--success {
+		margin-left: 20px;
+	}
+}
