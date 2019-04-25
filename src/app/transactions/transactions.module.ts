@@ -3,7 +3,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { TransactionsRoutingModule } from './transactions-routing.module';
-import { NbDialogModule } from '@nebular/theme';
+import { NbLayoutModule, NbCardModule, NbListModule } from '@nebular/theme';
+import { SharedPipesModule } from '../shared/pipes/shared-pipes.module';
 
 @NgModule({
     declarations: [
@@ -12,7 +13,10 @@ import { NbDialogModule } from '@nebular/theme';
     imports: [
         CommonModule,
         RouterModule,
-        NbDialogModule,
+        NbLayoutModule,
+        NbCardModule,
+        NbListModule,
+        SharedPipesModule,
         TransactionsRoutingModule
     ],
 })

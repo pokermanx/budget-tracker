@@ -112,7 +112,7 @@
       "period": 3,
       "title": "test",
       "lastExpanses": {},
-      "balance": 410,
+      "balance": 67,
       "currency": 1,
       "active": true,
       "id": 13
@@ -388,6 +388,34 @@
       "category": -1,
       "walletId": 13,
       "id": 27
+    },
+    {
+      "date": "04/25/2019",
+      "type": "outgoing",
+      "value": "233",
+      "currency": 1,
+      "category": -1,
+      "walletId": 13,
+      "id": 28
+    },
+    {
+      "date": "04/25/2019",
+      "type": "outgoing",
+      "value": "10",
+      "currency": 1,
+      "category": 3,
+      "walletId": 13,
+      "id": 29
+    },
+    {
+      "date": "04/25/2019",
+      "type": "outgoing",
+      "value": "100",
+      "description": "dfsdfsdfsfdsfdfsd",
+      "currency": 1,
+      "category": 3,
+      "walletId": 13,
+      "id": 30
     }
   ],
   "walletCategories": [

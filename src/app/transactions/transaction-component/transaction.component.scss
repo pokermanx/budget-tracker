@@ -1,0 +1,71 @@
+@import "../../../styles.scss";
+
+.transactions-container {
+    display: flex;
+}
+
+.column-title {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+}
+
+.title {
+    font-size: 26px;
+}
+
+.title-value {
+    font-size: 26px;
+    
+}
+
+.income {
+    color: nb-theme(btn-success-bg);
+}
+
+.outgoing {
+    color: nb-theme(btn-danger-bg);
+}
+
+.list-wrapper {
+    width: 400px;
+    overflow: auto;
+    height: calc(100vh - 250px);
+}
+
+.list {
+    height: 100%;
+}
+
+.outcome-column {
+    border: nb-theme(select-border-width) solid nb-theme(btn-danger-bg);
+    border-radius: nb-theme(btn-border-radius);
+}
+
+.income-column {
+    border: nb-theme(select-border-width) solid nb-theme(btn-success-bg);
+    border-radius: nb-theme(btn-border-radius);
+}
+
+.transaction-tile {
+    display: flex;
+    justify-content: space-between;
+}
+
+.category-field {
+    border: nb-theme(select-border-width) solid #ffffff;
+    border-radius: nb-theme(btn-border-radius);
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+
+.no-bottom-borders {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.arrow {
+    font-size: 10px;
+    display: flex;
+    align-items: center;
+}

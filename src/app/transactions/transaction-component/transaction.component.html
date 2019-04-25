@@ -1,1 +1,68 @@
-heyheyheyheyheyheyheyheyheyheyheyheyheyheyheyheyheyheyheyheyheyheyheyheyheyheyheyheyheyheyheyheyheyhey
+<div class="transactions-container">
+    <nb-layout-column *ngIf="isLoaded">
+        <div class="column-title">
+            <span class="title">
+                Outcome:
+            </span>
+            <span class="title-value outgoing">
+                {{ outgoingTransactions | sumPipe }}
+            </span>
+        </div>
+        <div class="list-wrapper outcome-column">
+            <nb-list>
+                <nb-list-item class="transaction-row" *ngFor="let transaction of outgoingTransactions">
+                    <nb-card>
+                        <nb-card-header class="transaction-tile outgoing">
+                            {{ transaction.value + ' ' + walletCurrency[transaction.currency] }}
+                            <span class="arrow">
+                                ▼
+                            </span>
+                        </nb-card-header>
+                        <nb-card-body class="category-field"
+                            [ngStyle]="{'border-color': getColor(transaction.category, 'income')}"
+                            [ngClass]="{'no-bottom-borders': transaction.description}"    
+                        >
+                            {{ getCategory(transaction.category, 'income') }}
+                        </nb-card-body>
+                        <nb-card-footer *ngIf="transaction.description">
+                            {{ transaction.description }}
+                        </nb-card-footer>
+                    </nb-card>
+                </nb-list-item>
+            </nb-list>
+        </div>
+    </nb-layout-column>
+    <nb-layout-column *ngIf="isLoaded">
+        <div class="column-title">
+            <span class="title">
+                Income:
+            </span>
+            <span class="title-value income">
+                {{ incomeTransactions | sumPipe }}
+            </span>
+        </div>
+        <div class="list-wrapper income-column">
+            <nb-list>
+                <nb-list-item class="transaction-row" *ngFor="let transaction of incomeTransactions">
+                    <nb-card>
+                        <nb-card-header class="transaction-tile income">
+                            {{ transaction.value + ' ' + walletCurrency[transaction.currency] }}
+                            <span class="arrow">
+                                ▲
+                            </span>
+                        </nb-card-header>
+                        <nb-card-body class="category-field"
+                            [ngStyle]="{'border-color': getColor(transaction.category, 'outgoing')}"
+                            [ngClass]="{'no-bottom-borders': transaction.description}"                            
+                        >
+                            {{ getCategory(transaction.category, 'outgoing') }}
+                        </nb-card-body>
+                        <nb-card-footer *ngIf="transaction.description">
+                            {{ transaction.description }}
+                        </nb-card-footer>
+                    </nb-card>
+                </nb-list-item>
+            </nb-list>
+        </div>
+    </nb-layout-column>
+</div>
