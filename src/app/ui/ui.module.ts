@@ -11,7 +11,8 @@ import {
     NbOverlayModule,
     NbTabsetModule,
     NbDatepickerModule,
-    NbPopoverModule
+    NbPopoverModule,
+    NbProgressBarModule
 } from '@nebular/theme';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
@@ -48,6 +49,7 @@ import { AddBudgetComponent } from '../budgets/add-budget/add-budget.component';
         NbMomentDateModule,
         NbPopoverModule,
         ColorPickerModule,
+        NbProgressBarModule,
         RouterModule
     ],
     exports: [NavBarComponent, ValidationMessagesComponent],
