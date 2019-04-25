@@ -1,5 +1,23 @@
 <div class="budgets-container">
     <nb-layout-column *ngIf="isLoaded">
+        <nb-card class="list-wrapper">
+            <nb-card-header>
+                Budgets
+            </nb-card-header>
+            <nb-list>
+                <nb-list-item *ngFor="let budget of budgetsList">
+                    <div class="budget-tile">
+                        <span class="budget-name">
+                            {{ budget.name }}
+                        </span>
+                        <span class="budget-value">
+                            {{ budget.value + ' ' + currencySymbols[currWallet.currency]}}
+                        </span>
+                        <nb-progress-bar [value]="20"></nb-progress-bar>
+                    </div>
+                </nb-list-item>
+            </nb-list>
+        </nb-card>
         <div class="add-budget">
             <nb-card>
                 <nb-card-body>

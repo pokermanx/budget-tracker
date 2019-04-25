@@ -28,4 +28,8 @@ export class BudgetService {
 
         return this.http.post<BudgetModel>(`${environment.apiEndpoint}/budgets/`, request);
     }
+
+    getAllWalletBudgets() {
+        return this.http.get<BudgetModel[]>(`${environment.apiEndpoint}/wallets/${this.walletProvider.getWallet().id}/budgets`);
+    }
 }

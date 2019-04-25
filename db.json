@@ -6,12 +6,12 @@
       "title": "Personal",
       "lastExpenses": {
         "date": "04/25/2019",
-        "value": "222",
+        "value": "12",
         "currency": 1,
-        "category": 1,
-        "type": "income"
+        "category": -1,
+        "type": "outgoing"
       },
-      "balance": 242,
+      "balance": 230,
       "currency": 1,
       "active": true
     },
@@ -139,6 +139,15 @@
       "category": 1,
       "walletId": 1,
       "id": 10
+    },
+    {
+      "date": "04/25/2019",
+      "type": "outgoing",
+      "value": "12",
+      "currency": 1,
+      "category": -1,
+      "walletId": 1,
+      "id": 11
     }
   ],
   "walletCategories": [
@@ -413,6 +422,27 @@
         -1
       ],
       "id": 2
+    },
+    {
+      "walletId": 1,
+      "name": "New Badget",
+      "value": "121",
+      "period": 3,
+      "categories": [
+        2,
+        6
+      ],
+      "id": 3
+    },
+    {
+      "walletId": 1,
+      "name": "222",
+      "value": "12",
+      "period": 3,
+      "categories": [
+        -1
+      ],
+      "id": 4
     }
   ],
   "initialCategories": {

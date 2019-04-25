@@ -47,7 +47,6 @@ export class NavBarComponent implements OnInit {
         this.walletProvider.getWalletSub()
             .subscribe((wallet: WalletModel) => {
                 this.myWallet = wallet;
-                console.log(this.myWallet);
             });
     }
 
