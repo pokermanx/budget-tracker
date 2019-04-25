@@ -2,7 +2,13 @@
     <nb-card-header>Add new budget</nb-card-header>
     <nb-card-body>
         <form [formGroup]="addBudgetForm">
-            
+            <input type="text" nbInput fullWidth fieldSize="medium" placeholder="Name">
+            <input type="text" nbInput fullWidth fieldSize="medium" placeholder="Name">
+            <nb-select formControlName="period">
+                <nb-option *ngFor="let period of periods | keyvalue | slice:0:5" [value]="+period.key">
+                    {{ period.value }}
+                </nb-option>
+            </nb-select>
         </form>
     </nb-card-body>
 </nb-card>
