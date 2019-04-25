@@ -5,12 +5,41 @@
       "period": 0,
       "title": "Personal",
       "lastExpenses": {},
-      "balance": "450",
+      "balance": 472,
       "currency": "uah",
       "active": true
+    },
+    {
+      "period": 3,
+      "title": "ew",
+      "lastExpanses": {},
+      "balance": 0,
+      "currency": 1,
+      "active": false,
+      "id": 2
+    },
+    {
+      "period": 3,
+      "title": "111",
+      "lastExpanses": {},
+      "balance": 0,
+      "currency": 1,
+      "active": false,
+      "id": 3
     }
   ],
-  "transactions": [],
+  "transactions": [
+    {
+      "date": "04/25/2019",
+      "type": "income",
+      "value": "22",
+      "description": "11",
+      "currency": 1,
+      "category": 1,
+      "walletId": 1,
+      "id": 1
+    }
+  ],
   "walletCategories": [
     {
       "id": 1,
@@ -35,6 +64,11 @@
           }
         ],
         "outgoingCategories": [
+          {
+            "id": 10,
+            "name": "12",
+            "color": "#ffffff"
+          },
           {
             "id": 1,
             "name": "Car",
@@ -82,6 +116,83 @@
           }
         ]
       }
+    },
+    {
+      "walletId": 2,
+      "title": "ew Categories",
+      "list": null,
+      "id": 2
+    },
+    {
+      "walletId": 3,
+      "title": "111 Categories",
+      "list": {
+        "incomeCategories": [
+          {
+            "id": 1,
+            "name": "Salary",
+            "color": "#00ff2a"
+          },
+          {
+            "id": 2,
+            "name": "Scholarship",
+            "color": "#ff004c"
+          },
+          {
+            "id": 3,
+            "name": "Pension",
+            "color": "#bd4de2"
+          }
+        ],
+        "outgoingCategories": [
+          {
+            "id": 1,
+            "name": "Car",
+            "color": "#9ef442"
+          },
+          {
+            "id": 2,
+            "name": "Bank",
+            "color": "#4c755b"
+          },
+          {
+            "id": 3,
+            "name": "Business",
+            "color": "#8838af"
+          },
+          {
+            "id": 4,
+            "name": "Home",
+            "color": "#c90024"
+          },
+          {
+            "id": 5,
+            "name": "Education",
+            "color": "#e0dd16"
+          },
+          {
+            "id": 6,
+            "name": "Gifts",
+            "color": "#ff9400"
+          },
+          {
+            "id": 7,
+            "name": "Machinery",
+            "color": "#6da5ff"
+          },
+          {
+            "id": 8,
+            "name": "Traveling",
+            "color": "#b24bc6"
+          },
+          {
+            "id": 9,
+            "name": "Fashion",
+            "color": "#224368"
+          }
+        ]
+      },
+      "id": 3
     }
   ],
   "debts": [],

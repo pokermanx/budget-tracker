@@ -123,3 +123,30 @@
 		margin-left: 20px;
 	}
 }
+
+.add-category-wrapper {
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+}
+
+.color-input {
+	text-align: center;
+	width: 200px;
+	border: 0;
+	height: 100%;
+}
+
+.cat-name-input {
+	width: 200px !important;
+	border-bottom-left-radius: 0 !important;
+	border-bottom-right-radius: 0 !important;
+	border-bottom: 0 !important;
+}
+
+.add-category-btn-popover {
+	height: 40px;
+	padding: 8px;
+	border-top-left-radius: 0 !important;
+	border-top-right-radius: 0 !important;
+}
