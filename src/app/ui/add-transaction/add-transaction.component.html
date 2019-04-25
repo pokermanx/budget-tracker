@@ -27,11 +27,13 @@
                             (click)="updateSelected(-1, 'outgoing')">
                             No Category
                         </li>
-                        <li class="category-tile" *ngFor="let category of walletCategories.list.outgoingCategories"
-                            [ngStyle]="{'border-color': category.color}"
-                            [ngClass]="{'selected-category': selectedOItem === category.id}"
-                            (click)="updateSelected(category.id, 'outgoing')">
-                            {{ category.name }}
+                        <li *ngIf="walletCategories.list" class="categories-list">
+                            <div class="category-tile" *ngFor="let category of walletCategories.list.outgoingCategories"
+                                [ngStyle]="{'border-color': category.color}"
+                                [ngClass]="{'selected-category': selectedOItem === category.id}"
+                                (click)="updateSelected(category.id, 'outgoing')">
+                                {{ category.name }}
+                            </div>
                         </li>
                     </ul>
                 </div>
@@ -47,11 +49,13 @@
                             (click)="updateSelected(-1, 'income')">
                             No Category
                         </li>
-                        <li class="category-tile" *ngFor="let category of walletCategories.list.incomeCategories"
-                            [ngStyle]="{'border-color': category.color}"
-                            [ngClass]="{'selected-category': selectedIItem === category.id}"
-                            (click)="updateSelected(category.id, 'income')">
-                            {{ category.name }}
+                        <li *ngIf="walletCategories.list" class="categories-list">
+                            <div class="category-tile" *ngFor="let category of walletCategories.list.incomeCategories"
+                                [ngStyle]="{'border-color': category.color}"
+                                [ngClass]="{'selected-category': selectedIItem === category.id}"
+                                (click)="updateSelected(category.id, 'income')">
+                                {{ category.name }}
+                            </div>
                         </li>
                     </ul>
                 </div>
