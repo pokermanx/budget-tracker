@@ -1,0 +1,10 @@
+<div class="chart" *ngIf="isLoaded">
+    <canvas baseChart
+        [data]="chartData"
+        [labels]="chartLabels"
+        [chartType]="pieChartType"
+        [colors]="chartColors"
+        [options]="chartOptions"
+    >
+  </canvas>
+</div>

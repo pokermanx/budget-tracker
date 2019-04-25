@@ -4,7 +4,8 @@ import { NavBarComponent } from './ui/navbar/navbar.component';
 
 const routes: Routes = [
   { path: '', children: [
-    { path: 'transactions', loadChildren: '../app/transactions/transactions.module#TransactionsModule' }
+    { path: 'transactions', loadChildren: '../app/transactions/transactions.module#TransactionsModule' },
+    { path: 'statistics', loadChildren: '../app/statistics/statistics.module#StatisticsModule' }
   ]}
 ];
 
