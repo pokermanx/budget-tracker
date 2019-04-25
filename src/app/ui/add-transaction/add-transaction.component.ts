@@ -23,9 +23,7 @@ export class AddTransactionComponent implements OnInit {
     moment = moment;
 
     sumForm: FormGroup;
-    catName = new FormControl([
-        // Validators.required
-    ]);
+    catName = new FormControl();
 
     selectedOItem = -1;
     selectedIItem = -1;

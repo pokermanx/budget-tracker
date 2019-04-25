@@ -92,8 +92,8 @@
 <ng-template #addPopover>
     <nb-card class="add-category-wrapper">
         <input class="cat-name-input" [formControl]="catName" type="text" nbInput fullWidth fieldSize="medium"
-            placeholder="Name" [ngStyle]="{'border-color': color}">
+            placeholder="Name" [ngStyle]="{'border-color': color}" required>
         <input [value]="color" class="color-input" [(colorPicker)]="color" [style.background]="color" />
-        <button nbButton hero status="success" class="add-category-btn-popover" (click)="addCategory()">+</button>
+        <button nbButton hero status="success" class="add-category-btn-popover" (click)="addCategory()" [disabled]="catName.invalid">+</button>
     </nb-card>
 </ng-template>
