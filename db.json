@@ -4,15 +4,21 @@
       "id": 1,
       "period": 0,
       "title": "Personal",
-      "lastExpenses": {},
-      "balance": 472,
+      "lastExpenses": {
+        "date": "04/25/2019",
+        "value": "222",
+        "currency": 1,
+        "category": 1,
+        "type": "income"
+      },
+      "balance": 242,
       "currency": 1,
       "active": true
     },
     {
       "period": 3,
       "title": "ew",
-      "lastExpanses": {},
+      "lastExpenses": {},
       "balance": 0,
       "currency": 1,
       "active": false,
@@ -21,7 +27,7 @@
     {
       "period": 3,
       "title": "111",
-      "lastExpanses": {},
+      "lastExpenses": {},
       "balance": 100,
       "currency": 1,
       "active": false,
@@ -30,7 +36,7 @@
     {
       "period": 3,
       "title": "newwww",
-      "lastExpanses": {},
+      "lastExpenses": {},
       "balance": 210,
       "currency": 1,
       "active": false,
@@ -96,6 +102,43 @@
       "category": 1,
       "walletId": 4,
       "id": 6
+    },
+    {
+      "date": "04/24/2019",
+      "type": "outgoing",
+      "value": "100",
+      "description": "new",
+      "currency": 1,
+      "category": 1,
+      "walletId": 1,
+      "id": 7
+    },
+    {
+      "date": "04/25/2019",
+      "type": "income",
+      "value": "100",
+      "currency": 1,
+      "category": 1,
+      "walletId": 1,
+      "id": 8
+    },
+    {
+      "date": "04/25/2019",
+      "type": "outgoing",
+      "value": "2",
+      "currency": 1,
+      "category": -1,
+      "walletId": 1,
+      "id": 9
+    },
+    {
+      "date": "04/25/2019",
+      "type": "income",
+      "value": "222",
+      "currency": 1,
+      "category": 1,
+      "walletId": 1,
+      "id": 10
     }
   ],
   "walletCategories": [

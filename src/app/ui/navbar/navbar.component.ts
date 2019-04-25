@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { WalletService } from 'src/app/shared/services/wallet.service';
-import { WalletModel } from 'src/app/shared/models/wallet.model';
+import { WalletModel, CurrencySymbol } from 'src/app/shared/models/wallet.model';
 import { WalletProvider } from 'src/app/shared/providers/wallet.provider';
 import { FormControl } from '@angular/forms';
 import { NbDialogService } from '@nebular/theme';
 import { AddWalletComponent } from '../add-wallet/add-wallet.component';
 import { AddTransactionComponent } from '../add-transaction/add-transaction.component';
+import * as moment from 'moment';
 
 @Component({
     selector: 'app-navbar',
@@ -17,11 +18,14 @@ export class NavBarComponent implements OnInit {
     myWallet: WalletModel;
     wallets: WalletModel[];
     walletControl = new FormControl('');
+    currencies = CurrencySymbol;
+
+    moment = moment;
 
     constructor(
         private walletProvider: WalletProvider,
         private walletService: WalletService,
-        private dialogService: NbDialogService
+        private dialogService: NbDialogService,
     ) { }
 
     initControls() {

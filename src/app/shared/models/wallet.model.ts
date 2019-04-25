@@ -29,7 +29,7 @@ export class WalletModel {
     id: number;
     period: WalletPeriod;
     title: string;
-    lastExpanses: any;
+    lastExpenses: any;
     balance: number;
     currency: Currency;
     active: boolean;

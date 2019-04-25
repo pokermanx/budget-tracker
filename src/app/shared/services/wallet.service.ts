@@ -5,6 +5,7 @@ import { WalletModel } from '../models/wallet.model';
 import { WalletProvider } from '../providers/wallet.provider';
 import { mergeMap, map } from 'rxjs/operators';
 import { CategoriesService } from './categories.service';
+import { LastExpensesModel } from '../models/last-expanses.model';
 
 @Injectable({
     providedIn: 'root'
@@ -33,7 +34,7 @@ export class WalletService {
         const request = {
             period: formValue.period,
             title: formValue.title,
-            lastExpanses: {},
+            lastExpenses: {},
             balance: 0,
             currency: formValue.currency,
             active: false
@@ -58,5 +59,12 @@ export class WalletService {
         }
 
         return this.http.patch(`${environment.apiEndpoint}/wallets/${currWallet.id}`, {balance});
+    }
+
+    updateLastExpenses(lastExpenses: LastExpensesModel) {
+        return this.http.patch<LastExpensesModel>(
+                `${environment.apiEndpoint}/wallets/${this.walletProvider.getWallet().id}`,
+                {lastExpenses}
+            );
     }
 }
