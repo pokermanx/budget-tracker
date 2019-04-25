@@ -4,7 +4,7 @@
         <form [formGroup]="walletForm" (ngSubmit)="onSubmit()" class="form-container">
             <div class="form-input-block">
                 <input type="text" nbInput fullWidth fieldSize="medium" placeholder="Name" formControlName="title" required>
-                <app-validation-messages *ngIf="walletForm.controls.title.invalid && walletForm.controls.title.touched" [errors]="walletForm.controls.title.errors"></app-validation-messages>
+                <app-validation-messages *ngIf="walletForm.controls.title.invalid && walletForm.controls.title.touched" [control]="walletForm.controls.title"></app-validation-messages>
             </div>
             <div class="form-input-block">
                 <nb-select class="wallet-select" formControlName="period">

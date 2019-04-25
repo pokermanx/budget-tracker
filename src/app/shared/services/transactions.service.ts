@@ -5,6 +5,7 @@ import { environment } from 'src/environments/environment';
 import { WalletProvider } from '../providers/wallet.provider';
 import { WalletService } from './wallet.service';
 import { mergeMap } from 'rxjs/operators';
+import { forkJoin } from 'rxjs';
 
 @Injectable({
     providedIn: 'root'
@@ -26,7 +27,13 @@ export class TransactionsService {
         return this.http.post(`${environment.apiEndpoint}/transactions`, request)
             // @ts-ignore
             .pipe(mergeMap((res: TransactionModel) => {
-                return this.walletService.updateBalance(res.value, res.type);
+                return forkJoin(this.walletService.updateBalance(res.value, res.type), this.walletService.updateLastExpenses({
+                    date: res.date,
+                    value: res.value,
+                    currency: res.currency,
+                    category: res.category,
+                    type: res.type
+                }));
             }));
     }
 }

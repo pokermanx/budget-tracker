@@ -1,11 +1,35 @@
 <nb-layout center class="main-container">
     <nb-layout-header class="nav-top">
         <nb-layout-column class="wallet-status">
-            <button nbButton hero status="info" class="wallet-status">Last Expanses</button>
+            <button nbButton hero status="info" class="wallet-status">
+                Last action: 
+                <div class="last-expenses-container" *ngIf="(myWallet.lastExpenses | json) != '{}'; else noExpenses"
+                    [ngClass]="{'income': myWallet.lastExpenses.type === 'income', 'outgoing': myWallet.lastExpenses.type === 'outgoing'}"
+                >
+                    {{ myWallet.lastExpenses.value + ' ' +  currencies[myWallet.lastExpenses.currency]}}
+                    <span [ngSwitch]="myWallet.lastExpenses.type">
+                        <span class="arrow" *ngSwitchCase="'income'">
+                            ▲
+                        </span>
+                        <span class="arrow" *ngSwitchCase="'outgoing'">
+                            ▼
+                        </span>
+                        <span *ngSwitchDefault>
+                            ?
+                        </span>
+                    </span>
+                    <div class="last-date">
+                        {{ moment(myWallet.lastExpenses.date).fromNow() }}
+                    </div>
+                </div>
+                <ng-template #noExpenses>
+                    No expenses yet
+                </ng-template>
+            </button>
         </nb-layout-column>
         <nb-actions size="big" class="nav-actions" fullWidth>
-            <nb-action class="nav-actions__action">
-                Summary
+            <nb-action class="nav-actions__action" [routerLink]="['/budgets']">
+                Budgets
             </nb-action>
             <nb-action class="nav-actions__action" [routerLink]="['/statistics']">
                 Statistics

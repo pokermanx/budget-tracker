@@ -21,13 +21,15 @@ import { ValidationMessagesComponent } from './validation-messages/validation-me
 import { AddTransactionComponent } from './add-transaction/add-transaction.component';
 import { NbMomentDateModule } from '@nebular/moment';
 import { ColorPickerModule } from 'ngx-color-picker';
+import { AddBudgetComponent } from '../budgets/add-budget/add-budget.component';
 
 @NgModule({
     declarations: [
         NavBarComponent,
         AddWalletComponent,
         ValidationMessagesComponent,
-        AddTransactionComponent
+        AddTransactionComponent,
+        AddBudgetComponent
     ],
     imports: [
         CommonModule,
@@ -49,6 +51,11 @@ import { ColorPickerModule } from 'ngx-color-picker';
         RouterModule
     ],
     exports: [NavBarComponent, ValidationMessagesComponent],
-    entryComponents: [AddWalletComponent, AddTransactionComponent]
+    entryComponents: [
+        AddWalletComponent,
+        AddTransactionComponent,
+        // here due to lazy loading
+        AddBudgetComponent
+    ]
 })
 export class UiModule {}

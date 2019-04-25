@@ -1,0 +1,14 @@
+<div class="budgets-container">
+    <nb-layout-column *ngIf="isLoaded">
+        <div class="add-budget">
+            <nb-card>
+                <nb-card-body>
+                    <button class="add-budget-button" nbButton hero status="success" (click)="addNewBudget()">
+                        <span class="plus-sign">+&nbsp;</span>
+                        <span class="add-text">Add new budget</span>
+                    </button>
+                </nb-card-body>
+            </nb-card>
+        </div>
+    </nb-layout-column>
+</div>

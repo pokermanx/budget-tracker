@@ -4,15 +4,21 @@
       "id": 1,
       "period": 0,
       "title": "Personal",
-      "lastExpenses": {},
-      "balance": 472,
-      "currency": "uah",
+      "lastExpenses": {
+        "date": "04/25/2019",
+        "value": "222",
+        "currency": 1,
+        "category": 1,
+        "type": "income"
+      },
+      "balance": 242,
+      "currency": 1,
       "active": true
     },
     {
       "period": 3,
       "title": "ew",
-      "lastExpanses": {},
+      "lastExpenses": {},
       "balance": 0,
       "currency": 1,
       "active": false,
@@ -21,11 +27,20 @@
     {
       "period": 3,
       "title": "111",
-      "lastExpanses": {},
-      "balance": 0,
+      "lastExpenses": {},
+      "balance": 100,
       "currency": 1,
       "active": false,
       "id": 3
+    },
+    {
+      "period": 3,
+      "title": "newwww",
+      "lastExpenses": {},
+      "balance": 210,
+      "currency": 1,
+      "active": false,
+      "id": 4
     }
   ],
   "transactions": [
@@ -35,9 +50,95 @@
       "value": "22",
       "description": "11",
       "currency": 1,
-      "category": 1,
       "walletId": 1,
       "id": 1
+    },
+    {
+      "date": "04/25/2019",
+      "type": "outgoing",
+      "value": "200",
+      "description": "asdasd",
+      "currency": 1,
+      "category": 11,
+      "walletId": 1,
+      "id": 2
+    },
+    {
+      "date": "04/24/2019",
+      "type": "income",
+      "value": "200",
+      "description": "ew",
+      "currency": 1,
+      "category": 4,
+      "walletId": 1,
+      "id": 3
+    },
+    {
+      "date": "04/25/2019",
+      "type": "income",
+      "value": "100",
+      "description": "aas",
+      "currency": 1,
+      "category": 1,
+      "walletId": 3,
+      "id": 4
+    },
+    {
+      "date": "04/25/2019",
+      "type": "income",
+      "value": "222",
+      "description": "asas",
+      "currency": 1,
+      "category": 4,
+      "walletId": 4,
+      "id": 5
+    },
+    {
+      "date": "04/25/2019",
+      "type": "outgoing",
+      "value": "12",
+      "description": "as",
+      "currency": 1,
+      "category": 1,
+      "walletId": 4,
+      "id": 6
+    },
+    {
+      "date": "04/24/2019",
+      "type": "outgoing",
+      "value": "100",
+      "description": "new",
+      "currency": 1,
+      "category": 1,
+      "walletId": 1,
+      "id": 7
+    },
+    {
+      "date": "04/25/2019",
+      "type": "income",
+      "value": "100",
+      "currency": 1,
+      "category": 1,
+      "walletId": 1,
+      "id": 8
+    },
+    {
+      "date": "04/25/2019",
+      "type": "outgoing",
+      "value": "2",
+      "currency": 1,
+      "category": -1,
+      "walletId": 1,
+      "id": 9
+    },
+    {
+      "date": "04/25/2019",
+      "type": "income",
+      "value": "222",
+      "currency": 1,
+      "category": 1,
+      "walletId": 1,
+      "id": 10
     }
   ],
   "walletCategories": [
@@ -47,6 +148,11 @@
       "title": "Personal Categories",
       "list": {
         "incomeCategories": [
+          {
+            "id": 4,
+            "name": "some new",
+            "color": "#ff0000"
+          },
           {
             "id": 1,
             "name": "Salary",
@@ -64,6 +170,11 @@
           }
         ],
         "outgoingCategories": [
+          {
+            "id": 11,
+            "name": "one",
+            "color": "#1d3f27"
+          },
           {
             "id": 10,
             "name": "12",
@@ -193,10 +304,117 @@
         ]
       },
       "id": 3
+    },
+    {
+      "walletId": 4,
+      "title": "newwww Categories",
+      "list": {
+        "incomeCategories": [
+          {
+            "id": 4,
+            "name": "some new",
+            "color": "#ff0000"
+          },
+          {
+            "id": 1,
+            "name": "Salary",
+            "color": "#ffffff"
+          },
+          {
+            "id": 2,
+            "name": "Scholarship",
+            "color": "#ffffff"
+          },
+          {
+            "id": 3,
+            "name": "Pension",
+            "color": "#ffffff"
+          }
+        ],
+        "outgoingCategories": [
+          {
+            "id": 11,
+            "name": "one",
+            "color": "#1d3f27"
+          },
+          {
+            "id": 10,
+            "name": "12",
+            "color": "#ffffff"
+          },
+          {
+            "id": 1,
+            "name": "Car",
+            "color": "#ffffff"
+          },
+          {
+            "id": 2,
+            "name": "Bank",
+            "color": "#ffffff"
+          },
+          {
+            "id": 3,
+            "name": "Business",
+            "color": "#ffffff"
+          },
+          {
+            "id": 4,
+            "name": "Home",
+            "color": "#9ef442"
+          },
+          {
+            "id": 5,
+            "name": "Education",
+            "color": "#ffffff"
+          },
+          {
+            "id": 6,
+            "name": "Gifts",
+            "color": "#ffffff"
+          },
+          {
+            "id": 7,
+            "name": "Machinery",
+            "color": "#ffffff"
+          },
+          {
+            "id": 8,
+            "name": "Traveling",
+            "color": "#ffffff"
+          },
+          {
+            "id": 9,
+            "name": "Fashion",
+            "color": "#ffffff"
+          }
+        ]
+      },
+      "id": 4
     }
   ],
   "debts": [],
-  "budgets": [],
+  "budgets": [
+    {
+      "walletId": 1,
+      "name": "1212",
+      "value": "1212",
+      "period": 3,
+      "categories": [
+        -1
+      ],
+      "id": 1
+    },
+    {
+      "walletId": 1,
+      "name": "12",
+      "value": "12",
+      "period": 3,
+      "categories": [
+        -1
+      ],
+      "id": 2
+    }
+  ],
   "initialCategories": {
     "incomeCategories": [
       {

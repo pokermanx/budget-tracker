@@ -15,7 +15,7 @@
                 </nb-select>
             </div>
             <app-validation-messages *ngIf="sumForm.controls.value.invalid && sumForm.controls.value.touched"
-                [errors]="sumForm.controls.value.errors"></app-validation-messages>
+                [control]="sumForm.controls.value"></app-validation-messages>
         </form>
         <nb-tabset class="transaction-tabs" (changeTab)="onTabChange()">
             <nb-tab tabTitle="Outgoings">
