@@ -119,6 +119,9 @@ export class AddTransactionComponent implements OnInit {
     }
 
     addCategory() {
+        if (!this.walletCategories.list) {
+            this.walletCategories.list = {incomeCategories: new Array(), outgoingCategories: new Array()};
+        }
         if (this.type === 'income') {
             const lastId = Math.max.apply(null, this.walletCategories.list.incomeCategories.map(el => +el.id));
             this.walletCategories.list.incomeCategories.unshift({

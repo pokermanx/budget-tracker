@@ -4,13 +4,206 @@
       "id": 1,
       "period": 0,
       "title": "Personal",
+      "lastExpenses": {
+        "date": "05/13/2019",
+        "value": "200",
+        "currency": 1,
+        "category": 12,
+        "type": "outgoing"
+      },
+      "balance": 700,
+      "currency": 1,
+      "active": true
+    },
+    {
+      "period": 3,
+      "title": "new",
       "lastExpenses": {},
       "balance": 0,
       "currency": 1,
-      "active": true
+      "active": false,
+      "id": 2
+    },
+    {
+      "period": 3,
+      "title": "21212",
+      "lastExpenses": {},
+      "balance": 0,
+      "currency": 1,
+      "active": false,
+      "id": 3
+    },
+    {
+      "period": 3,
+      "title": "mewmew",
+      "lastExpenses": {
+        "date": "05/13/2019",
+        "value": "200",
+        "currency": 1,
+        "category": 12,
+        "type": "outgoing"
+      },
+      "balance": 1100,
+      "currency": 1,
+      "active": false,
+      "id": 4
+    },
+    {
+      "period": 3,
+      "title": "asdasdasd",
+      "lastExpenses": {
+        "date": "05/13/2019",
+        "value": "22",
+        "currency": 1,
+        "category": -1,
+        "type": "outgoing"
+      },
+      "balance": -22,
+      "currency": 1,
+      "active": false,
+      "id": 5
+    },
+    {
+      "period": 3,
+      "title": "dasdasd",
+      "lastExpenses": {
+        "date": "05/13/2019",
+        "value": "22",
+        "currency": 1,
+        "category": null,
+        "type": "outgoing"
+      },
+      "balance": -22,
+      "currency": 1,
+      "active": false,
+      "id": 6
     }
   ],
-  "transactions": [],
+  "transactions": [
+    {
+      "date": "04/08/2019",
+      "type": "outgoing",
+      "value": "200",
+      "description": "mmweea",
+      "currency": 1,
+      "category": 4,
+      "walletId": 1,
+      "id": 1
+    },
+    {
+      "date": "05/05/2019",
+      "type": "outgoing",
+      "value": "200",
+      "description": "sdsdsdsd",
+      "currency": 1,
+      "category": 8,
+      "walletId": 1,
+      "id": 2
+    },
+    {
+      "date": "05/05/2019",
+      "type": "income",
+      "value": "400",
+      "currency": 1,
+      "category": 2,
+      "walletId": 1,
+      "id": 3
+    },
+    {
+      "date": "05/05/2019",
+      "type": "outgoing",
+      "value": "100",
+      "currency": 1,
+      "category": 10,
+      "walletId": 1,
+      "id": 4
+    },
+    {
+      "date": "05/05/2019",
+      "type": "outgoing",
+      "value": "100",
+      "currency": 1,
+      "category": 10,
+      "walletId": 1,
+      "id": 5
+    },
+    {
+      "date": "05/05/2019",
+      "type": "outgoing",
+      "value": "200",
+      "currency": 1,
+      "category": 11,
+      "walletId": 1,
+      "id": 6
+    },
+    {
+      "date": "05/05/2019",
+      "type": "outgoing",
+      "value": "100",
+      "currency": 1,
+      "category": -1,
+      "walletId": 1,
+      "id": 7
+    },
+    {
+      "date": "05/13/2019",
+      "type": "income",
+      "value": "1300",
+      "description": "dsadas",
+      "currency": 1,
+      "category": 2,
+      "walletId": 1,
+      "id": 8
+    },
+    {
+      "date": "05/13/2019",
+      "type": "outgoing",
+      "value": "200",
+      "currency": 1,
+      "category": 12,
+      "walletId": 1,
+      "id": 9
+    },
+    {
+      "date": "05/12/2019",
+      "type": "income",
+      "value": "1300",
+      "currency": 1,
+      "category": 2,
+      "walletId": 4,
+      "id": 10
+    },
+    {
+      "date": "05/13/2019",
+      "type": "outgoing",
+      "value": "200",
+      "description": "asdasd",
+      "currency": 1,
+      "category": 12,
+      "walletId": 4,
+      "id": 11
+    },
+    {
+      "date": "05/13/2019",
+      "type": "outgoing",
+      "value": "22",
+      "description": "dasdasdasd",
+      "currency": 1,
+      "category": -1,
+      "walletId": 5,
+      "id": 12
+    },
+    {
+      "date": "05/13/2019",
+      "type": "outgoing",
+      "value": "22",
+      "description": "saddasdasdasd",
+      "currency": 1,
+      "category": null,
+      "walletId": 6,
+      "id": 13
+    }
+  ],
   "walletCategories": [
     {
       "id": 1,
@@ -35,6 +228,21 @@
           }
         ],
         "outgoingCategories": [
+          {
+            "id": 12,
+            "name": "gavno",
+            "color": "#452770"
+          },
+          {
+            "id": 11,
+            "name": "2323",
+            "color": "#8b6a6a"
+          },
+          {
+            "id": 10,
+            "name": "new category",
+            "color": "#b73b3b"
+          },
           {
             "id": 1,
             "name": "Car",
@@ -82,6 +290,125 @@
           }
         ]
       }
+    },
+    {
+      "walletId": 2,
+      "title": "new Categories",
+      "list": null,
+      "id": 2
+    },
+    {
+      "walletId": 3,
+      "title": "21212 Categories",
+      "list": null,
+      "id": 3
+    },
+    {
+      "walletId": 4,
+      "title": "mewmew Categories",
+      "list": {
+        "incomeCategories": [
+          {
+            "id": 1,
+            "name": "Salary",
+            "color": "#00ff2a"
+          },
+          {
+            "id": 2,
+            "name": "Scholarship",
+            "color": "#ff004c"
+          },
+          {
+            "id": 3,
+            "name": "Pension",
+            "color": "#bd4de2"
+          }
+        ],
+        "outgoingCategories": [
+          {
+            "id": 12,
+            "name": "gavno",
+            "color": "#452770"
+          },
+          {
+            "id": 11,
+            "name": "2323",
+            "color": "#8b6a6a"
+          },
+          {
+            "id": 10,
+            "name": "new category",
+            "color": "#b73b3b"
+          },
+          {
+            "id": 1,
+            "name": "Car",
+            "color": "#9ef442"
+          },
+          {
+            "id": 2,
+            "name": "Bank",
+            "color": "#4c755b"
+          },
+          {
+            "id": 3,
+            "name": "Business",
+            "color": "#8838af"
+          },
+          {
+            "id": 4,
+            "name": "Home",
+            "color": "#c90024"
+          },
+          {
+            "id": 5,
+            "name": "Education",
+            "color": "#e0dd16"
+          },
+          {
+            "id": 6,
+            "name": "Gifts",
+            "color": "#ff9400"
+          },
+          {
+            "id": 7,
+            "name": "Machinery",
+            "color": "#6da5ff"
+          },
+          {
+            "id": 8,
+            "name": "Traveling",
+            "color": "#b24bc6"
+          },
+          {
+            "id": 9,
+            "name": "Fashion",
+            "color": "#224368"
+          }
+        ]
+      },
+      "id": 4
+    },
+    {
+      "walletId": 5,
+      "title": "asdasdasd Categories",
+      "list": null,
+      "id": 5
+    },
+    {
+      "walletId": 6,
+      "title": "dasdasd Categories",
+      "list": {
+        "incomeCategories": [],
+        "outgoingCategories": [
+          {
+            "id": null,
+            "name": "dasdasd",
+            "color": "#ffffff"
+          }
+        ]
+      },
+      "id": 6
     }
   ],
   "debts": [],
@@ -96,6 +423,16 @@
         6
       ],
       "id": 1
+    },
+    {
+      "walletId": 6,
+      "name": "new budget",
+      "value": "2000",
+      "period": 3,
+      "categories": [
+        null
+      ],
+      "id": 2
     }
   ],
   "initialCategories": {
