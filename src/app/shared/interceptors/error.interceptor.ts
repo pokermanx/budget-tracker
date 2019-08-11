@@ -26,7 +26,8 @@ export class RequestInterceptor implements HttpInterceptor {
             if (err instanceof HttpErrorResponse) {
                 const position = 'bottom-end';
                 // @ts-ignore
-                this.toastrService.show(err.statusText, 'Error', {status: NbToastStatus.DANGER, position});
+                this.toastrService.show(err.error.name, 'Error', { status: NbToastStatus.DANGER, position });
+                throw new Error(err.error.message);
             }
         }));
     }

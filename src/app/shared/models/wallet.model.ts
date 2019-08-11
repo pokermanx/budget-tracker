@@ -26,7 +26,7 @@ export enum CurrencySymbol {
 }
 
 export class WalletModel {
-    id: number;
+    _id: number;
     period: WalletPeriod;
     title: string;
     lastExpenses: any;

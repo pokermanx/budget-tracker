@@ -26,15 +26,15 @@
                                 [nbPopoverPlacement]="popoverPos">+</button>
                         </li>
                         <li class="category-tile category-tile--no"
-                            [ngClass]="{'selected-category': selectedOItem === -1}"
-                            (click)="updateSelected(-1, 'outgoing')">
+                            [ngClass]="{'selected-category': selectedOItem === null}"
+                            (click)="updateSelected(null, 'outgoing')">
                             No Category
                         </li>
-                        <li *ngIf="walletCategories.list" class="categories-list">
-                            <div class="category-tile" *ngFor="let category of walletCategories.list.outgoingCategories"
+                        <li *ngFor="let category of walletCategories" class="categories-list">
+                            <div class="category-tile" *ngIf="category.type === 'outgoing'"
                                 [ngStyle]="{'border-color': category.color}"
-                                [ngClass]="{'selected-category': selectedOItem === category.id}"
-                                (click)="updateSelected(category.id, 'outgoing')">
+                                [ngClass]="{'selected-category': selectedOItem === category._id}"
+                                (click)="updateSelected(category._id, 'outgoing')">
                                 {{ category.name }}
                             </div>
                         </li>
@@ -49,15 +49,15 @@
                                 [nbPopoverPlacement]="popoverPos">+</button>
                         </li>
                         <li class="category-tile category-tile--no"
-                            [ngClass]="{'selected-category': selectedIItem === -1}"
-                            (click)="updateSelected(-1, 'income')">
+                            [ngClass]="{'selected-category': selectedIItem === null}"
+                            (click)="updateSelected(null, 'income')">
                             No Category
                         </li>
-                        <li *ngIf="walletCategories.list" class="categories-list">
-                            <div class="category-tile" *ngFor="let category of walletCategories.list.incomeCategories"
+                        <li *ngFor="let category of walletCategories" class="categories-list">
+                            <div class="category-tile" *ngIf="category.type === 'income'"
                                 [ngStyle]="{'border-color': category.color}"
-                                [ngClass]="{'selected-category': selectedIItem === category.id}"
-                                (click)="updateSelected(category.id, 'income')">
+                                [ngClass]="{'selected-category': selectedIItem === category._id}"
+                                (click)="updateSelected(category._id, 'income')">
                                 {{ category.name }}
                             </div>
                         </li>
@@ -94,6 +94,7 @@
         <input class="cat-name-input" [formControl]="catName" type="text" nbInput fullWidth fieldSize="medium"
             placeholder="Name" [ngStyle]="{'border-color': color}" required>
         <input [value]="color" class="color-input" [(colorPicker)]="color" [style.background]="color" />
-        <button nbButton hero status="success" class="add-category-btn-popover" (click)="addCategory()" [disabled]="catName.invalid">+</button>
+        <button nbButton hero status="success" class="add-category-btn-popover" (click)="addCategory()"
+            [disabled]="catName.invalid">+</button>
     </nb-card>
 </ng-template>

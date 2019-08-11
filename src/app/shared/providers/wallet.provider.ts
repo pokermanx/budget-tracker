@@ -14,7 +14,7 @@ export class WalletProvider {
     ) { }
 
     loadWallet() {
-        return this.http.get<WalletModel[]>(`${environment.apiEndpoint}/wallets?active=true`);
+        return this.http.get<WalletModel>(`${environment.apiEndpoint}/wallets/getActive`);
     }
 
     getWalletSub() {
@@ -32,9 +32,8 @@ export class WalletProvider {
     updateCurrentWallet() {
         return new Promise((resolve) => {
             this.loadWallet()
-                .subscribe((res: WalletModel[]) => {
-                    const [dec] = res;
-                    this.currentWallet.next(dec);
+                .subscribe((res: WalletModel) => {
+                    this.currentWallet.next(res);
                     resolve(true);
                 });
         });
@@ -43,9 +42,8 @@ export class WalletProvider {
     init() {
         return new Promise((resolve, reject) => {
             this.loadWallet()
-                .subscribe((res: WalletModel[]) => {
-                    const [dec] = res;
-                    this.currentWallet = new BehaviorSubject<WalletModel>(dec);
+                .subscribe((res: WalletModel) => {
+                    this.currentWallet = new BehaviorSubject<WalletModel>(res);
                     resolve(true);
                 });
         });

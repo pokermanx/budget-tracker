@@ -22,12 +22,8 @@ export class WalletService {
         return this.http.get<WalletModel[]>(`${environment.apiEndpoint}/wallets?active=false`);
     }
 
-    changeWalletStatus(id: number) {
-        return this.http.patch(`${environment.apiEndpoint}/wallets/${this.walletProvider.getWallet().id}`, { active: false })
-            .pipe(mergeMap(() => {
-                return this.http.patch<WalletModel>(`${environment.apiEndpoint}/wallets/${id}`, { active: true });
-            })
-        );
+    changeWallet(id: number) {
+        return this.http.patch(`${environment.apiEndpoint}/wallets?id=${id}`, {});
     }
 
     addNewWallet(formValue) {
@@ -45,7 +41,7 @@ export class WalletService {
         return this.http.post(`${environment.apiEndpoint}/wallets`, request)
             // @ts-ignore
             .pipe(mergeMap((newWallet: WalletModel) => {
-                return this.categoriesService.setWalletCategories(categories, newWallet.id, newWallet.title);
+                return this.categoriesService.setWalletCategories(categories, newWallet._id, newWallet.title);
             }));
     }
 
@@ -58,12 +54,12 @@ export class WalletService {
             balance -= +value;
         }
 
-        return this.http.patch(`${environment.apiEndpoint}/wallets/${currWallet.id}`, {balance});
+        return this.http.patch(`${environment.apiEndpoint}/wallets/${currWallet._id}`, {balance});
     }
 
     updateLastExpenses(lastExpenses: LastExpensesModel) {
         return this.http.patch<LastExpensesModel>(
-                `${environment.apiEndpoint}/wallets/${this.walletProvider.getWallet().id}`,
+                `${environment.apiEndpoint}/wallets/${this.walletProvider.getWallet()._id}`,
                 {lastExpenses}
             );
     }

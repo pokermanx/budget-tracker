@@ -59,7 +59,7 @@ export class AddWalletComponent implements OnInit {
     onSubmit() {
         this.walletService.addNewWallet(this.walletForm.value)
             .subscribe((res: WalletCategoriesModel) => {
-                this.walletService.changeWalletStatus(res.walletId)
+                this.walletService.changeWallet(res.walletId)
                     .subscribe(() => {
                         this.walletProvider.updateCurrentWallet()
                             .then(() => this.closeDialog(true));

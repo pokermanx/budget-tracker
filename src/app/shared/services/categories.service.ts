@@ -29,7 +29,7 @@ export class CategoriesService {
         return this.http.post(`${environment.apiEndpoint}/walletCategories`, request);
     }
 
-    updateWalletCategories(list) {
-        return this.http.patch(`${environment.apiEndpoint}/walletCategories/${this.walletProvider.getWallet().id}`, {list: list});
+    addWalletCategory(request) {
+        return this.http.post(`${environment.apiEndpoint}/walletCategories`, request);
     }
 }

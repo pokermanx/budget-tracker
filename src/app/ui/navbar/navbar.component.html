@@ -3,7 +3,7 @@
         <nb-layout-column class="wallet-status">
             <button nbButton hero status="info" class="wallet-status">
                 Last action: 
-                <div class="last-expenses-container" *ngIf="(myWallet.lastExpenses | json) != '{}'; else noExpenses"
+                <div class="last-expenses-container" *ngIf="myWallet.lastExpenses; else noExpenses"
                     [ngClass]="{'income': myWallet.lastExpenses.type === 'income', 'outgoing': myWallet.lastExpenses.type === 'outgoing'}"
                 >
                     {{ myWallet.lastExpenses.value + ' ' +  currencies[myWallet.lastExpenses.currency]}}
@@ -40,7 +40,7 @@
             <nb-action class="nav-actions__action">
                 <nb-select class="wallet-select" [placeholder]="myWallet ? myWallet.title : 'Wallets'"
                     [formControl]="walletControl">
-                    <nb-option class="wallet-option" *ngFor="let wallet of wallets" [value]="wallet.id">
+                    <nb-option class="wallet-option" *ngFor="let wallet of wallets" [value]="wallet._id">
                         {{ wallet.title }}</nb-option>
                     <nb-option (click)="addNewWallet()" class="wallet-option add-wallet" [value]="null">+ Add Wallet
                     </nb-option>

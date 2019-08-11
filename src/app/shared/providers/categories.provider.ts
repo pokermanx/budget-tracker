@@ -8,11 +8,9 @@ import { WalletProvider } from './wallet.provider';
 export class CategoriesProvider {
 
     private defaultCategories: CategoryModel[];
-    private walletCategories: WalletCategoriesModel;
 
     constructor(
         private http: HttpClient,
-        private walletProvider: WalletProvider
     ) { }
 
     loadDefaultCategories() {
@@ -21,7 +19,7 @@ export class CategoriesProvider {
 
     loadWalletsCategories() {
         return this.http.get<WalletCategoriesModel[]>(
-            `${environment.apiEndpoint}/wallets/${this.walletProvider.getWallet().id}/walletCategories`
+            `${environment.apiEndpoint}/walletCategories`
             );
     }
 
@@ -37,11 +35,13 @@ export class CategoriesProvider {
 
     init() {
         return new Promise(resolve => {
-            this.loadDefaultCategories()
-                .subscribe((categories: CategoryModel[]) => {
-                    this.defaultCategories = categories;
+
                     resolve(true);
-                });
+            // this.loadDefaultCategories()
+            //     .subscribe((categories: CategoryModel[]) => {
+            //         this.defaultCategories = categories;
+            //         resolve(true);
+            //     });
         });
     }
 }

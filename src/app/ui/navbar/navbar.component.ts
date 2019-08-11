@@ -31,7 +31,7 @@ export class NavBarComponent implements OnInit {
     initControls() {
         this.walletControl.valueChanges.subscribe(val => {
             if (val) {
-                this.walletService.changeWalletStatus(val)
+                this.walletService.changeWallet(val)
                     // @ts-ignore
                     .subscribe(() => {
                         this.walletProvider.updateCurrentWallet()

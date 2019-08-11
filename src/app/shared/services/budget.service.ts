@@ -16,7 +16,7 @@ export class BudgetService {
 
     addNewBudget(model, categories: number[]) {
 
-        const cuurId = this.walletProvider.getWallet().id;
+        const cuurId = this.walletProvider.getWallet()._id;
 
         const request = {
             walletId: cuurId,
@@ -30,6 +30,6 @@ export class BudgetService {
     }
 
     getAllWalletBudgets() {
-        return this.http.get<BudgetModel[]>(`${environment.apiEndpoint}/wallets/${this.walletProvider.getWallet().id}/budgets`);
+        return this.http.get<BudgetModel[]>(`${environment.apiEndpoint}/wallets/${this.walletProvider.getWallet()._id}/budgets`);
     }
 }

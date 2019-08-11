@@ -25,8 +25,8 @@ export class AddTransactionComponent implements OnInit {
     sumForm: FormGroup;
     catName = new FormControl();
 
-    selectedOItem = -1;
-    selectedIItem = -1;
+    selectedOItem = null;
+    selectedIItem = null;
 
     request: any = {};
 
@@ -37,7 +37,7 @@ export class AddTransactionComponent implements OnInit {
 
     currencies = Currency;
     currencySymbols = CurrencySymbol;
-    walletCategories: WalletCategoriesModel;
+    walletCategories: WalletCategoriesModel[];
 
     popoverPos = NbPosition.BOTTOM;
     color = '#ffffff';
@@ -52,7 +52,7 @@ export class AddTransactionComponent implements OnInit {
         categoriesProvider.loadWalletsCategories()
             .pipe(finalize(() => this.isLoaded = true))
             .subscribe((res: WalletCategoriesModel[]) => {
-                [this.walletCategories] = res;
+                this.walletCategories = res;
             });
     }
 
@@ -68,18 +68,15 @@ export class AddTransactionComponent implements OnInit {
             ]),
             currency: new FormControl(1),
         });
-
-        this.catName.valueChanges.subscribe(val => console.log(val, this.color))
     }
 
     onSubmit() {
         this.request = {
-            date: this.selectedDate.format('MM/DD/YYYY'),
+            date: this.selectedDate.format(),
             type: this.type,
             value: this.sumForm.controls.value.value,
             description: this.description,
-            currency: this.sumForm.controls.currency.value,
-            category: -1
+            currency: this.sumForm.controls.currency.value
         };
         if (this.type === 'outgoing') {
             this.request.category = this.selectedOItem;
@@ -119,26 +116,15 @@ export class AddTransactionComponent implements OnInit {
     }
 
     addCategory() {
-        if (!this.walletCategories.list) {
-            this.walletCategories.list = {incomeCategories: new Array(), outgoingCategories: new Array()};
-        }
-        if (this.type === 'income') {
-            const lastId = Math.max.apply(null, this.walletCategories.list.incomeCategories.map(el => +el.id));
-            this.walletCategories.list.incomeCategories.unshift({
-                id: lastId + 1,
-                name: this.catName.value,
-                color: this.color
-            });
-        } else {
-            const lastId = Math.max.apply(null, this.walletCategories.list.outgoingCategories.map(el => +el.id));
-            this.walletCategories.list.outgoingCategories.unshift({
-                id: lastId + 1,
-                name: this.catName.value,
-                color: this.color
-            });
-        }
+        const category = {
+            name: this.catName.value,
+            color: this.color,
+            type: this.type
+        };
 
-        this.categoriesService.updateWalletCategories(this.walletCategories.list)
-            .subscribe(res => console.log(res))
+        this.categoriesService.addWalletCategory(category)
+            .subscribe((res: WalletCategoriesModel) => {
+                this.walletCategories.unshift(res);
+            });
     }
 }
