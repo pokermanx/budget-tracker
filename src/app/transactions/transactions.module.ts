@@ -5,10 +5,12 @@ import { RouterModule } from '@angular/router';
 import { TransactionsRoutingModule } from './transactions-routing.module';
 import { NbLayoutModule, NbCardModule, NbListModule } from '@nebular/theme';
 import { SharedPipesModule } from '../shared/pipes/shared-pipes.module';
+import { ShowOptionsDirective } from './transaction-component/show-options.directive';
 
 @NgModule({
     declarations: [
-        TransactionsComponent
+        TransactionsComponent,
+        ShowOptionsDirective
     ],
     imports: [
         CommonModule,
