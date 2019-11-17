@@ -1,16 +1,16 @@
-import { TransactionsComponent } from './transaction-component/transaction.component';
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { TransactionsRoutingModule } from './transactions-routing.module';
-import { NbLayoutModule, NbCardModule, NbListModule } from '@nebular/theme';
+import { NbCardModule, NbLayoutModule, NbListModule } from '@nebular/theme';
+
 import { SharedPipesModule } from '../shared/pipes/shared-pipes.module';
-import { ShowOptionsDirective } from './transaction-component/show-options.directive';
+import { ShowActionsModule } from '../shared/show-option/show-options.module';
+import { TransactionsComponent } from './transaction-component/transaction.component';
+import { TransactionsRoutingModule } from './transactions-routing.module';
 
 @NgModule({
     declarations: [
-        TransactionsComponent,
-        ShowOptionsDirective
+        TransactionsComponent
     ],
     imports: [
         CommonModule,
@@ -19,6 +19,7 @@ import { ShowOptionsDirective } from './transaction-component/show-options.direc
         NbCardModule,
         NbListModule,
         SharedPipesModule,
+        ShowActionsModule,
         TransactionsRoutingModule
     ],
 })

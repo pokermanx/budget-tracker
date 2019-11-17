@@ -144,6 +144,9 @@ export class TransactionsComponent {
         console.log(transaction)
     }
     onDelete(transaction) {
-        console.log(transaction)
+        this.transactionsService.deleteTransaction(transaction._id).subscribe((res: any) => {
+            this.incomeTransactions = this.incomeTransactions.filter(el => el._id !== res.data);
+            this.outgoingTransactions = this.outgoingTransactions.filter(el => el._id !== res.data);
+        });
     }
 }

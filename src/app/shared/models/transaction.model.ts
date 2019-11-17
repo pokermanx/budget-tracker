@@ -1,5 +1,5 @@
 export class TransactionModel {
-    id: number;
+    _id: number;
     walletId: number;
     date: string;
     type: 'income' | 'outgoing';

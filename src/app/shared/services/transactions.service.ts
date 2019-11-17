@@ -23,4 +23,12 @@ export class TransactionsService {
     addTransaction(request: TransactionModel) {
         return this.http.post(`${environment.apiEndpoint}/transactions`, request);
     }
+
+    updateTransaction(request: TransactionModel) {
+        return this.http.put(`${environment.apiEndpoint}/transactions`, request);
+    }
+
+    deleteTransaction(id: string) {
+        return this.http.delete(`${environment.apiEndpoint}/transactions?id=${id}`);
+    }
 }

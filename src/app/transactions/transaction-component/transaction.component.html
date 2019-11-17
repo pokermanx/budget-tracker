@@ -9,8 +9,7 @@
             </span>
         </div>
         <div class="list-wrapper outcome-column">
-            <nb-list appShowOption [showAtIndex]="showOptions.type === 'income' ? showOptions : null"
-                (collapseAllEvent)="onCollapseAll()">
+            <nb-list>
                 <nb-list-item class="transaction-row" *ngFor="let transaction of outgoingTransactions; let i = index"
                     (click)="setCurrent(i ,'income')">
                     <div class="date-stamp">
@@ -50,31 +49,38 @@
             </span>
         </div>
         <div class="list-wrapper income-column">
-            <nb-list appShowOption [showAtIndex]="showOptions.type === 'out' ? showOptions : null"
-                (collapseAllEvent)="onCollapseAll()">
+            <nb-list>
                 <nb-list-item class="transaction-row transaction-card"
                     *ngFor="let transaction of incomeTransactions; let i = index" (click)="setCurrent(i ,'out')">
-                    <div class="transaction-card">
-                        <div class="date-stamp">
-                            {{ moment(transaction.date).fromNow() }}
-                        </div>
-                        <nb-card class="transaction-card">
-                            <nb-card-header class="transaction-tile income">
-                                {{ transaction.value + ' ' + walletCurrency[transaction.currency] }}
-                                <span class="arrow">
-                                    ▲
-                                </span>
-                            </nb-card-header>
-                            <nb-card-body class="category-field" *ngIf="transaction.category"
-                                [ngStyle]="{'border-color': getColor(transaction.category, 'income')}"
-                                [ngClass]="{'no-bottom-borders': transaction.description}">
-                                {{ getCategory(transaction.category, 'income') }}
-                            </nb-card-body>
-                            <nb-card-footer *ngIf="transaction.description" class="desc-container">
-                                Note: {{ transaction.description }}
-                            </nb-card-footer>
-                        </nb-card>
-                    </div>
+                    <app-show-options>
+                        <ng-template testActionItem>
+                            <div class="date-stamp">
+                                {{ moment(transaction.date).fromNow() }}
+                            </div>
+                            <nb-card class="transaction-card">
+                                <nb-card-header class="transaction-tile income">
+                                    {{ transaction.value + ' ' + walletCurrency[transaction.currency] }}
+                                    <span class="arrow">
+                                        ▲
+                                    </span>
+                                </nb-card-header>
+                                <nb-card-body class="category-field" *ngIf="transaction.category"
+                                    [ngStyle]="{'border-color': getColor(transaction.category, 'income')}"
+                                    [ngClass]="{'no-bottom-borders': transaction.description}">
+                                    {{ getCategory(transaction.category, 'income') }}
+                                </nb-card-body>
+                                <nb-card-footer *ngIf="transaction.description" class="desc-container">
+                                    Note: {{ transaction.description }}
+                                </nb-card-footer>
+                            </nb-card>
+                        </ng-template>
+                        <ng-template testOptionsToShow>
+                            <ul class="options-bottom">
+                                <li (click)="onEdit(transaction)">Edit</li>
+                                <li (click)="onDelete(transaction)" class="red-text">Delete</li>
+                            </ul>
+                        </ng-template>
+                    </app-show-options>
                 </nb-list-item>
             </nb-list>
         </div>
