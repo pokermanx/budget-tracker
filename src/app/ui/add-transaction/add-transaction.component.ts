@@ -1,22 +1,30 @@
-import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { Currency, CurrencySymbol } from 'src/app/shared/models/wallet.model';
-import { WalletCategoriesModel } from 'src/app/shared/models/category.model';
-import { CategoriesProvider } from 'src/app/shared/providers/categories.provider';
-import { finalize } from 'rxjs/operators';
-import * as moment from 'moment';
-import { TransactionModel } from 'src/app/shared/models/transaction.model';
-import { CategoriesService } from 'src/app/shared/services/categories.service';
+import { AfterViewInit, Component, ViewChild } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { NbDialogRef, NbPosition } from '@nebular/theme';
-import { TransactionsService } from 'src/app/shared/services/transactions.service';
+import { NbTabsetComponent } from '@nebular/theme/components/tabset/tabset.component';
+import * as moment from 'moment';
+import { finalize } from 'rxjs/operators';
+import { WalletCategoriesModel } from 'src/app/shared/models/category.model';
+import { TransactionModel } from 'src/app/shared/models/transaction.model';
+import { Currency, CurrencySymbol } from 'src/app/shared/models/wallet.model';
+import { CategoriesProvider } from 'src/app/shared/providers/categories.provider';
 import { WalletProvider } from 'src/app/shared/providers/wallet.provider';
+import { CategoriesService } from 'src/app/shared/services/categories.service';
+import { TransactionsService } from 'src/app/shared/services/transactions.service';
+
+export enum Tabs {
+    outgoing,
+    income
+}
 
 @Component({
     selector: 'app-add-transaction',
     templateUrl: './add-transaction.component.html',
     styleUrls: ['./add-transaction.component.scss']
 })
-export class AddTransactionComponent implements OnInit {
+export class AddTransactionComponent implements AfterViewInit {
+
+    transaction: TransactionModel;
 
     isLoaded = false;
 
@@ -42,22 +50,29 @@ export class AddTransactionComponent implements OnInit {
     popoverPos = NbPosition.BOTTOM;
     color = '#ffffff';
 
+    @ViewChild('tabsetRef') tabset: NbTabsetComponent;
+
     constructor(
         private categoriesProvider: CategoriesProvider,
         private transactionService: TransactionsService,
         private dialogRef: NbDialogRef<AddTransactionComponent>,
         private walletProvider: WalletProvider,
         private categoriesService: CategoriesService
-    ) {
-        categoriesProvider.loadWalletsCategories()
-            .pipe(finalize(() => this.isLoaded = true))
+    ) { }
+
+    ngAfterViewInit() {
+        this.init();
+        this.categoriesProvider.loadWalletsCategories()
+            .pipe(finalize(() => {
+                this.isLoaded = true;
+                if (this.transaction) {
+                    this.patchForm();
+                    console.log(this.transaction)
+                }
+            }))
             .subscribe((res: WalletCategoriesModel[]) => {
                 this.walletCategories = res;
             });
-    }
-
-    ngOnInit() {
-        this.init();
     }
 
     init() {
@@ -84,10 +99,18 @@ export class AddTransactionComponent implements OnInit {
             this.request.category = this.selectedIItem;
         }
 
-        this.transactionService.addTransaction(this.request)
-            .subscribe(() => {
-                this.walletProvider.updateCurrentWallet().then(() => this.closeDialog(true));
-            });
+        if (this.transaction) {
+            this.request.id = this.transaction._id;
+            this.transactionService.updateTransaction(this.request)
+                .subscribe(res => {
+                    this.closeDialog(res);
+                });
+        } else {
+            this.transactionService.addTransaction(this.request)
+                .subscribe(() => {
+                    this.walletProvider.updateCurrentWallet().then(() => this.closeDialog(true));
+                });
+        }
     }
 
     updateSelected(id: number, type: string) {
@@ -98,8 +121,12 @@ export class AddTransactionComponent implements OnInit {
         }
     }
 
-    onTabChange() {
-        this.type = this.type === 'outgoing' ? 'income' : 'outgoing';
+    onTabChange(event) {
+        if (event.tabTitle === 'Outgoings') {
+            this.type = 'outgoing';
+        } else {
+            this.type = 'income';
+        }
     }
 
     changeDate(type: number) {
@@ -111,8 +138,8 @@ export class AddTransactionComponent implements OnInit {
         }
     }
 
-    closeDialog(status: boolean) {
-        this.dialogRef.close(status);
+    closeDialog(data) {
+        this.dialogRef.close(data);
     }
 
     addCategory() {
@@ -126,5 +153,19 @@ export class AddTransactionComponent implements OnInit {
             .subscribe((res: WalletCategoriesModel) => {
                 this.walletCategories.unshift(res);
             });
+    }
+
+    private patchForm() {
+        this.sumForm.patchValue(this.transaction);
+        this.selectedDate = this.moment(this.transaction.date);
+        this.description = this.transaction.description;
+        this.type = this.transaction.type;
+        if (this.type === 'outgoing') {
+            this.request.category = this.selectedOItem;
+            this.selectedOItem = this.transaction.category;
+        } else {
+            this.selectedIItem = this.transaction.category;
+        }
+
     }
 }

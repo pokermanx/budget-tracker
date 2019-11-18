@@ -7,6 +7,8 @@ import { CurrencySymbol, WalletModel } from 'src/app/shared/models/wallet.model'
 import { CategoriesProvider } from 'src/app/shared/providers/categories.provider';
 import { WalletProvider } from 'src/app/shared/providers/wallet.provider';
 import { TransactionsService } from 'src/app/shared/services/transactions.service';
+import { NbDialogService } from '@nebular/theme';
+import { AddTransactionComponent } from 'src/app/ui/add-transaction/add-transaction.component';
 
 @Component({
     selector: 'app-transactions',
@@ -35,7 +37,8 @@ export class TransactionsComponent {
     constructor(
         private transactionsService: TransactionsService,
         private categoriesProvider: CategoriesProvider,
-        private walletProvider: WalletProvider
+        private walletProvider: WalletProvider,
+        private dialogService: NbDialogService,
     ) {
         walletProvider.getWalletSub()
             .subscribe(wallet => {
@@ -98,8 +101,17 @@ export class TransactionsComponent {
     }
 
     onEdit(transaction) {
-        console.log(transaction)
+        setTimeout(() => {
+            this.dialogService.open(AddTransactionComponent, { context: { transaction } })
+                .onClose.subscribe(res => {
+                    if (res) {
+                        this.incomeTransactions[this.incomeTransactions.findIndex(x => x._id === res.id)] = res;
+                        this.outgoingTransactions[this.outgoingTransactions.findIndex(x => x._id === res.id)] = res;
+                    }
+                });
+        });
     }
+
     onDelete(transaction) {
         this.transactionsService.deleteTransaction(transaction._id).subscribe((res: any) => {
             this.incomeTransactions = this.incomeTransactions.filter(el => el._id !== res.data);

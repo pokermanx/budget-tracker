@@ -145,7 +145,7 @@ export class ShowOptionsComponent implements AfterViewInit, OnDestroy {
                 this.removeBackdrop(this._backdropCreated);
                 this.removeItem(this._itemCreated);
                 this._cdk.detectChanges();
-            }, 280);
+            }, 250);
             if (this.listenerClickItem) {
                 this.listenerClickItem();
             }

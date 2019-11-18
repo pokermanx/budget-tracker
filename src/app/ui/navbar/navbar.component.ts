@@ -7,6 +7,7 @@ import { NbDialogService } from '@nebular/theme';
 import { AddWalletComponent } from '../add-wallet/add-wallet.component';
 import { AddTransactionComponent } from '../add-transaction/add-transaction.component';
 import * as moment from 'moment';
+import { transition } from '@angular/animations';
 
 @Component({
     selector: 'app-navbar',
