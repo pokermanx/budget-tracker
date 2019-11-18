@@ -1,4 +1,4 @@
-import { transition, style, animate, trigger, animateChild, group, query, AnimationTriggerMetadata } from '@angular/animations';
+import { transition, style, animate, trigger, animateChild, group, query, AnimationTriggerMetadata, state } from '@angular/animations';
 
 export function onMoveUpAnimation() {
     return [
@@ -9,24 +9,24 @@ export function onMoveUpAnimation() {
                     style({ transform: 'translateY(0px)' }),
                     animate('250ms 30ms ease', style({
                         transform: 'translateY(-100px)'
-                    }),
-                    ),
+                    })),
                 ])
             ]),
             transition('* => void', [
-                query('@*', animateChild()),
-                style({ transform: 'translateY(-100px)' }),
-                animate('250ms 30ms ease-out', style({
-                    transform: 'translateY(0px)'
-                }),
-                ),
+                group([
+                    style({ transform: 'translateY(-100px)' }),
+                    query('@*', [animateChild()], {optional: true}),
+                    animate('250ms 30ms ease-out', style({
+                        transform: 'translateY(0px)'
+                    })),
+                ]),
             ]),
         ]),
         trigger('appearOptions', [
             transition(':enter', [
                 query('ul', [
                     style({ transform: 'translateY(-100px) scale(0)' }),
-                    animate('250ms 30ms ease-in', style({
+                    animate('200ms 0ms ease-in', style({
                         transform: 'translateY(0) scale(1)',
                     })),
                 ]),
@@ -35,7 +35,7 @@ export function onMoveUpAnimation() {
                 query('ul', [
                     style({ transform: 'translateY(0px) scale(1)' }),
                     animate('250ms 30ms ease-in', style({
-                        transform: 'translateY(-100px) scale(0)',
+                        transform: 'translateY(-10px) scale(0)',
                     })),
                 ]),
             ])

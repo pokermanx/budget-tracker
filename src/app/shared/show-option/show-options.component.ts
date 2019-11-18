@@ -1,4 +1,3 @@
-import { animate, animateChild, group, query, style, transition, trigger } from '@angular/animations';
 import {
     AfterViewInit,
     ApplicationRef,
@@ -50,6 +49,7 @@ export class ShowOptionsComponent implements AfterViewInit, OnDestroy {
     hasAttachedView = false;
 
     _openedItemCoords: PositionModel;
+    _itemWidth: number;
 
     listenerClickItem: Function;
     listenerBackdrop: Function;
@@ -79,6 +79,7 @@ export class ShowOptionsComponent implements AfterViewInit, OnDestroy {
             this.optionsRef.nativeElement.style = `
                 top: ${this._openedItemCoords.top}px;
                 left: ${this._openedItemCoords.left}px;
+                width: ${this._itemWidth}px;
             `;
         }
     }
@@ -98,9 +99,6 @@ export class ShowOptionsComponent implements AfterViewInit, OnDestroy {
         document.body.appendChild(domElem);
 
         this.listenerBackdrop = this.renderer.listen(domElem, 'click', () => {
-            // setTimeout(() => {
-            //     this.cleanup();
-            // }, 300);
             this.cleanup();
         });
 
@@ -111,6 +109,7 @@ export class ShowOptionsComponent implements AfterViewInit, OnDestroy {
         const componentRef = this.cfr.resolveComponentFactory(ShowOptionsComponent).create(this._defaultInjector);
         componentRef.instance.isOpened = true;
         componentRef.instance._openedItemCoords = this.getElemPosition(this.container.element.nativeElement);
+        componentRef.instance._itemWidth = this.getElementWidth(this.container.element.nativeElement);
         componentRef.instance.itemTemplate = this.itemTemplate;
         componentRef.instance.menuTemplate = this.menuTemplate;
         this._appRef.attachView(componentRef.hostView);
@@ -120,9 +119,6 @@ export class ShowOptionsComponent implements AfterViewInit, OnDestroy {
         document.body.appendChild(domElem);
 
         this.listenerClickItem = this.renderer.listen(domElem, 'click', () => {
-            // setTimeout(() => {
-            //     this.cleanup();
-            // }, 300);
             this.cleanup();
         });
 
@@ -141,20 +137,33 @@ export class ShowOptionsComponent implements AfterViewInit, OnDestroy {
 
     private cleanup(): void {
         if (this.hasAttachedView) {
+            this.isOpened = false;
             this.hasAttachedView = false;
+            this._itemCreated.instance.closeModal();
+            // TODO: handle item deletion on before closing
             setTimeout(() => {
                 this.removeBackdrop(this._backdropCreated);
                 this.removeItem(this._itemCreated);
                 this._cdk.detectChanges();
-            }, 300);
+            }, 280);
+            if (this.listenerClickItem) {
+                this.listenerClickItem();
+            }
+            if (this.listenerBackdrop) {
+                this.listenerBackdrop();
+            }
+        } else if (this.isOpened) {
+            this.isOpened = false;
         }
-        if (this.listenerClickItem) {
-            this.listenerClickItem();
-        }
-        if (this.listenerBackdrop) {
-            this.listenerClickItem();
-        }
+    }
+
+    private closeModal() {
         this.isOpened = false;
+        this._cdk.detectChanges();
+    }
+
+    private getElementWidth(elem) {
+        return elem.clientWidth;
     }
 
     private getElemPosition(elem): PositionModel {

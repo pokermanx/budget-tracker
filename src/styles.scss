@@ -12,17 +12,6 @@ html {
 	font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
 }
 
-.fade-body-backdrop {
-	background-color: rgba($color: #000000, $alpha: 0.5);
-	transition: all 200ms ease-in-out;
-	position: absolute;
-	z-index: 9;
-	top: 0;
-	left: 0;
-	width: 100vw;
-	height: 100vh;
-}
-
 .options-to-show ul {
 	width: 60%;
 	background-color: rgba(#000000, 0.4);
@@ -30,7 +19,6 @@ html {
 	padding: 0 !important;
 	margin: 0 !important;
 	list-style: none;
-	// animation: 200ms linear openOptions;
 
 	li {
 		color: #ffffff;
@@ -64,22 +52,3 @@ html {
 		color: red;
 	}
 }
-
-// @keyframes openTransition {
-// 	from {
-// 		transform: translateY(0px);
-// 	}
-// 	to {
-// 		transform: translateY(-100px);
-// 	}
-// }
-// @keyframes openOptions {
-// 	from {
-// 		transform: translateY(-200px);
-// 		transform: scale(0);
-// 	}
-// 	to {
-// 		transform: translateY(-1.5rem);
-// 		transform: scale(1);
-// 	}
-// }
