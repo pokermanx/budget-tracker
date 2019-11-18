@@ -1,6 +1,12 @@
-<div class="item-container" (click)="onItemClick()" #itemContainer> 
+<div class="item-container" (click)="onItemClick()" #itemContainer *ngIf="!hasAttachedView">
     <ng-container [ngTemplateOutlet]="itemTemplate"></ng-container>
-    <!-- <div class="options-container" *ngIf="isOpened">
-        <ng-container [ngTemplateOutlet]="menuTemplate"></ng-container>
-    </div> -->
+</div>
+
+<div *ngIf="isOpened" #containerWithOptions>
+    <div class="options-slide" #optionsRef [@moveUp]>
+        <ng-container [ngTemplateOutlet]="itemTemplate"></ng-container>
+        <div class="options-to-show" @appearOptions>
+            <ng-container [ngTemplateOutlet]="menuTemplate"></ng-container>
+        </div>
+    </div>
 </div>

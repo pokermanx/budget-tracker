@@ -1,60 +1,17 @@
-import { Component, OnInit } from '@angular/core';
-import { TransactionsService } from 'src/app/shared/services/transactions.service';
-import { TransactionModel } from 'src/app/shared/models/transaction.model';
-import { CategoriesProvider } from 'src/app/shared/providers/categories.provider';
-import { WalletCategoriesModel } from 'src/app/shared/models/category.model';
-import { CurrencySymbol, WalletModel } from 'src/app/shared/models/wallet.model';
-import { finalize } from 'rxjs/operators';
-import { WalletProvider } from 'src/app/shared/providers/wallet.provider';
+import { Component } from '@angular/core';
 import * as moment from 'moment';
 import { zip } from 'rxjs';
-import { trigger, style, state, transition, animate, group, query, animateChild, stagger } from '@angular/animations';
+import { finalize } from 'rxjs/operators';
+import { TransactionModel } from 'src/app/shared/models/transaction.model';
+import { CurrencySymbol, WalletModel } from 'src/app/shared/models/wallet.model';
+import { CategoriesProvider } from 'src/app/shared/providers/categories.provider';
+import { WalletProvider } from 'src/app/shared/providers/wallet.provider';
+import { TransactionsService } from 'src/app/shared/services/transactions.service';
 
 @Component({
     selector: 'app-transactions',
     templateUrl: './transaction.component.html',
     styleUrls: ['./transaction.component.scss'],
-    animations: [
-        trigger('moveUp', [
-            state('true', style({
-                transform: 'translateY(-150px)',
-                position: 'absolute',
-                width: '365px'
-            })),
-            state('false', style({
-                transform: 'none',
-                position: 'unset',
-                width: '365px'
-            })),
-            transition('true => false', [
-                animate(200, style({
-                    position: 'unset',
-                })),
-                style({
-                    transform: 'none',
-                    position: 'unset',
-                    width: '365px'
-                }),
-            ]),
-            transition('false => true', [
-                animate(200),
-            ])
-        ]),
-        trigger('cardPlaceholder', [
-            transition(':enter', [
-                animate(200),
-                style({
-                    visibility: 'visible',
-                }),
-            ]),
-            transition(':leave', [
-                style({
-                    visibility: 'hidden',
-                }),
-                animate(200)
-            ])
-        ])
-    ]
 })
 export class TransactionsComponent {
 

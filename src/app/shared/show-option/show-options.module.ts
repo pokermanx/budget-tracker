@@ -19,7 +19,8 @@ import { OptionsBackdropComponent } from './backdrop.component';
         ItemForActionsDirective
     ],
     entryComponents: [
-        OptionsBackdropComponent
+        OptionsBackdropComponent,
+        ShowOptionsComponent
     ]
 })
 export class ShowActionsModule { }
