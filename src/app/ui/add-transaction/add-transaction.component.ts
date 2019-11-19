@@ -100,10 +100,11 @@ export class AddTransactionComponent implements AfterViewInit {
         }
 
         if (this.transaction) {
-            this.request.id = this.transaction._id;
+            // @ts-ignore
+            this.request._id = this.transaction._id;
             this.transactionService.updateTransaction(this.request)
                 .subscribe(res => {
-                    this.closeDialog(res);
+                    this.walletProvider.updateCurrentWallet().then(() => this.closeDialog(res));
                 });
         } else {
             this.transactionService.addTransaction(this.request)

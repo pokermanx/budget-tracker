@@ -105,8 +105,8 @@ export class TransactionsComponent {
             this.dialogService.open(AddTransactionComponent, { context: { transaction } })
                 .onClose.subscribe(res => {
                     if (res) {
-                        this.incomeTransactions[this.incomeTransactions.findIndex(x => x._id === res.id)] = res;
-                        this.outgoingTransactions[this.outgoingTransactions.findIndex(x => x._id === res.id)] = res;
+                        this.incomeTransactions[this.incomeTransactions.findIndex(x => x._id === res._id)] = res;
+                        this.outgoingTransactions[this.outgoingTransactions.findIndex(x => x._id === res._id)] = res;
                     }
                 });
         });
@@ -116,6 +116,7 @@ export class TransactionsComponent {
         this.transactionsService.deleteTransaction(transaction._id).subscribe((res: any) => {
             this.incomeTransactions = this.incomeTransactions.filter(el => el._id !== res.data);
             this.outgoingTransactions = this.outgoingTransactions.filter(el => el._id !== res.data);
+            this.walletProvider.updateCurrentWallet().then(() => { });
         });
     }
 }

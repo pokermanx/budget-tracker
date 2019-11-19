@@ -1,5 +1,5 @@
 <nb-card *ngIf="isLoaded">
-    <nb-card-header>Add Transaction</nb-card-header>
+    <nb-card-header>{{ transaction ? 'Edit Transaction' : 'Add Transaction' }}</nb-card-header>
     <nb-card-body class="main-container">
         <form [formGroup]="sumForm">
             <div class="sum-input-wrapper">
@@ -83,7 +83,7 @@
             </button>
             <button class="form-button form-button--success" nbButton hero status="success" (click)="onSubmit()"
                 [disabled]="sumForm.invalid">
-                Add New
+                {{ transaction ? 'Save' : 'Add New' }}
             </button>
         </div>
     </nb-card-footer>
