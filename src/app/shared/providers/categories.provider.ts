@@ -18,9 +18,9 @@ export class CategoriesProvider {
     }
 
     loadWalletsCategories() {
-        return this.http.get<WalletCategoriesModel[]>(
+        return this.http.get(
             `${environment.apiEndpoint}/walletCategories`
-            );
+        );
     }
 
     // TODO
@@ -36,7 +36,7 @@ export class CategoriesProvider {
     init() {
         return new Promise(resolve => {
 
-                    resolve(true);
+            resolve(true);
             // this.loadDefaultCategories()
             //     .subscribe((categories: CategoryModel[]) => {
             //         this.defaultCategories = categories;

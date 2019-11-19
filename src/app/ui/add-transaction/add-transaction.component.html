@@ -33,8 +33,8 @@
                         <li *ngFor="let category of walletCategories" class="categories-list">
                             <div class="category-tile" *ngIf="category.type === 'outgoing'"
                                 [ngStyle]="{'border-color': category.color}"
-                                [ngClass]="{'selected-category': selectedOItem === category._id}"
-                                (click)="updateSelected(category._id, 'outgoing')">
+                                [ngClass]="{'selected-category': selectedOItem === category.id}"
+                                (click)="updateSelected(category.id, 'outgoing')">
                                 {{ category.name }}
                             </div>
                         </li>
@@ -56,8 +56,8 @@
                         <li *ngFor="let category of walletCategories" class="categories-list">
                             <div class="category-tile" *ngIf="category.type === 'income'"
                                 [ngStyle]="{'border-color': category.color}"
-                                [ngClass]="{'selected-category': selectedIItem === category._id}"
-                                (click)="updateSelected(category._id, 'income')">
+                                [ngClass]="{'selected-category': selectedIItem === category.id}"
+                                (click)="updateSelected(category.id, 'income')">
                                 {{ category.name }}
                             </div>
                         </li>

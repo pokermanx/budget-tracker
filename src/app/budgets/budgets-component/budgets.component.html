@@ -13,7 +13,7 @@
                         <span class="budget-value">
                             {{ budget.value + ' ' + currencySymbols[currWallet.currency]}}
                         </span>
-                        <nb-progress-bar [value]="20"></nb-progress-bar>
+                        <nb-progress-bar [value]="getProgressBarValue(budget.value, budget.valueUsed)"></nb-progress-bar>
                     </div>
                 </nb-list-item>
             </nb-list>

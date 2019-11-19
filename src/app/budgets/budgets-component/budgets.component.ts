@@ -63,4 +63,7 @@ export class BudgetsComponent implements OnInit {
         });
     }
 
+    getProgressBarValue(max, curr) {
+        return Math.round(curr * 100 / max);
+    }
 }

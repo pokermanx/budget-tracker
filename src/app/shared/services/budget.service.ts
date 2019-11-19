@@ -12,7 +12,7 @@ export class BudgetService {
     constructor(
         private http: HttpClient,
         private walletProvider: WalletProvider
-    ) {}
+    ) { }
 
     addNewBudget(model, categories: number[]) {
 
@@ -26,10 +26,10 @@ export class BudgetService {
             categories
         };
 
-        return this.http.post<BudgetModel>(`${environment.apiEndpoint}/budgets/`, request);
+        return this.http.post<BudgetModel>(`${environment.apiEndpoint}/budgets`, request);
     }
 
     getAllWalletBudgets() {
-        return this.http.get<BudgetModel[]>(`${environment.apiEndpoint}/wallets/${this.walletProvider.getWallet()._id}/budgets`);
+        return this.http.get<BudgetModel[]>(`${environment.apiEndpoint}/budgets`);
     }
 }

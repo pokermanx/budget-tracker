@@ -24,7 +24,7 @@
                                         ▼
                                     </span>
                                 </nb-card-header>
-                                <nb-card-body class="category-field"
+                                <nb-card-body class="category-field"  *ngIf="transaction.category"
                                     [ngStyle]="{'border-color': getColor(transaction.category, 'outgoing')}"
                                     [ngClass]="{'no-bottom-borders': transaction.description}">
                                     {{ getCategory(transaction.category, 'outgoing') }}

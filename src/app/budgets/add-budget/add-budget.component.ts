@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { WalletPeriod } from 'src/app/shared/models/wallet.model';
-import { CategoriesService } from 'src/app/shared/services/categories.service';
-import { CategoryModel, WalletCategoriesModel } from 'src/app/shared/models/category.model';
-import { CategoriesProvider } from 'src/app/shared/providers/categories.provider';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { NbDialogRef } from '@nebular/theme';
+import { CategoryModel, WalletCategoriesModel } from 'src/app/shared/models/category.model';
+import { WalletPeriod } from 'src/app/shared/models/wallet.model';
+import { CategoriesProvider } from 'src/app/shared/providers/categories.provider';
 import { BudgetService } from 'src/app/shared/services/budget.service';
 
 @Component({
@@ -55,13 +54,15 @@ export class AddBudgetComponent implements OnInit {
 
     getCategories() {
         this.categoriesProvider.loadWalletsCategories()
-            .subscribe((categories: WalletCategoriesModel[]) => {
-                const [des] = categories;
-                this.categoriesList = des.list.outgoingCategories;
+            .subscribe((categories: any) => {
+                this.categoriesList = categories.filter(el => {
+                    return el.type === 'outgoing';
+                });
             });
     }
 
     updateSelected(id: number) {
+        console.log(this.selectedItems)
         if (id === -1) {
             this.selectedItems = [-1];
         } else if (this.selectedItems.includes(-1)) {

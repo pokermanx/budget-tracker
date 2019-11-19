@@ -67,7 +67,6 @@ export class AddTransactionComponent implements AfterViewInit {
                 this.isLoaded = true;
                 if (this.transaction) {
                     this.patchForm();
-                    console.log(this.transaction)
                 }
             }))
             .subscribe((res: WalletCategoriesModel[]) => {

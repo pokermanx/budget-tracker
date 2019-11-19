@@ -67,7 +67,7 @@ export class ShowOptionsComponent implements AfterViewInit, OnDestroy {
         private _appRef: ApplicationRef,
         private _defaultInjector: Injector,
         private cfr: ComponentFactoryResolver,
-        private _cdk: ChangeDetectorRef
+        private _cdk: ChangeDetectorRef,
     ) { }
 
     ngOnDestroy() {
