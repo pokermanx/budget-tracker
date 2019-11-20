@@ -32,4 +32,8 @@ export class BudgetService {
     getAllWalletBudgets() {
         return this.http.get<BudgetModel[]>(`${environment.apiEndpoint}/budgets`);
     }
+
+    deleteBudget(id) {
+        return this.http.delete<any>(`${environment.apiEndpoint}/budgets?id=${id}`);
+    }
 }

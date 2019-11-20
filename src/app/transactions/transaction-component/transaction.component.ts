@@ -70,7 +70,7 @@ export class TransactionsComponent {
     }
 
     getColor(id: number, type: 'income' | 'outgoing') {
-        const category = this.walletCategories.find(x => x._id === id);
+        const category = this.walletCategories.find(x => x.id === id);
         if (!category) {
             return '#ffffff';
         } else {
@@ -79,7 +79,7 @@ export class TransactionsComponent {
     }
 
     getCategory(id: number, type: 'income' | 'outgoing') {
-        const category = this.walletCategories.find(x => x._id === id);
+        const category = this.walletCategories.find(x => x.id === id);
         if (!category) {
             return 'No Category';
         } else {

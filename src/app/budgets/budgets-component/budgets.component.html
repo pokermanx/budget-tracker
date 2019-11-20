@@ -6,15 +6,34 @@
             </nb-card-header>
             <nb-list>
                 <nb-list-item *ngFor="let budget of budgetsList">
-                    <div class="budget-tile">
-                        <span class="budget-name">
-                            {{ budget.name }}
-                        </span>
-                        <span class="budget-value">
-                            {{ budget.value + ' ' + currencySymbols[currWallet.currency]}}
-                        </span>
-                        <nb-progress-bar [value]="getProgressBarValue(budget.value, budget.valueUsed)"></nb-progress-bar>
-                    </div>
+                    <app-show-options>
+                        <ng-template testActionItem>
+                            <nb-card class="budget-tile">
+                                <span class="budget-name">
+                                    {{ budget.name }}
+                                </span>
+                                <span class="budget-value">
+                                    {{ budget.value + ' ' + currencySymbols[currWallet.currency]}}
+                                </span>
+                                <nb-progress-bar [value]="getProgressBarValue(budget.value, budget.valueUsed)"
+                                    [status]="getProgressBarStatus(budget.value, budget.valueUsed)">
+                                    {{ budget.valueUsed + currencySymbols[currWallet.currency]}}
+                                </nb-progress-bar>
+                            </nb-card>
+                        </ng-template>
+                        <ng-template testOptionsToShow>
+                            <div class="categories-show">
+                                <div class="category-tile" *ngFor="let cat of budget.categories"
+                                    [ngStyle]="{'border-color': getColor(cat)}">
+                                    {{ getName(cat) }}
+                                </div>
+                            </div>
+                            <ul class="options-bottom">
+                                <li (click)="onEdit(budget)">Edit</li>
+                                <li (click)="onDelete(budget)" class="red-text">Delete</li>
+                            </ul>
+                        </ng-template>
+                    </app-show-options>
                 </nb-list-item>
             </nb-list>
         </nb-card>

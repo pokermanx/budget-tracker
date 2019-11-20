@@ -1,31 +1,51 @@
+@import "../../../styles.scss";
+
 .add-budget {
-    width: 100%;
-    margin-top: 20px;
+	width: 100%;
+	margin-top: 20px;
 }
 
 .add-budget-button {
-    width: 100%;
-    display: flex;
-    justify-content: center;
+	width: 100%;
+	display: flex;
+	justify-content: center;
 }
 
 .plus-sign {
-    font-size: 20px;
+	font-size: 20px;
 }
 
 .budget-tile {
+	box-shadow: none;
+	padding: 10px;
 }
 
 .budget-name {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    font-size: 20px;
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	font-size: 20px;
 }
 
 .budget-value {
-    width: 100%;
-    display: flex;
-    margin: 5px 0;
-    justify-content: flex-end;  
+	width: 100%;
+	display: flex;
+	margin: 5px 0;
+	justify-content: flex-end;
+}
+
+.categories-show {
+	display: flex;
+    flex-wrap: wrap;
+    background-color: nb-theme(color-bg);
+    border-radius: 0.5rem;
+    margin: 5px 0 !important;
+	.category-tile {
+		width: auto;
+		border: 2px solid #ffffff;
+		border-radius: 0.5rem;
+		margin: 5px 10px !important;
+		padding: 10px 20px;
+		white-space: nowrap;
+	}
 }

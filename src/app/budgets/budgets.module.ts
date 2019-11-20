@@ -4,6 +4,7 @@ import { BudgetsRoutingModule } from './budgets-routing.module';
 import { CommonModule } from '@angular/common';
 import { NbLayoutModule, NbListModule, NbCardModule, NbButtonModule, NbDialogModule, NbProgressBarModule } from '@nebular/theme';
 import { AddBudgetComponent } from './add-budget/add-budget.component';
+import { ShowActionsModule } from '../shared/show-option/show-options.module';
 
 @NgModule({
     declarations: [BudgetsComponent],
@@ -15,7 +16,8 @@ import { AddBudgetComponent } from './add-budget/add-budget.component';
         NbCardModule,
         NbButtonModule,
         NbDialogModule,
-        NbProgressBarModule
+        NbProgressBarModule,
+        ShowActionsModule
     ],
     exports: [],
     entryComponents: []
