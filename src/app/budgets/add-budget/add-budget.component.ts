@@ -62,7 +62,6 @@ export class AddBudgetComponent implements OnInit {
     }
 
     updateSelected(id: number) {
-        console.log(this.selectedItems)
         if (id === -1) {
             this.selectedItems = [-1];
         } else if (this.selectedItems.includes(-1)) {
