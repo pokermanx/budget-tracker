@@ -22,7 +22,7 @@
     "@angular/router": "~7.2.0",
     "@nebular/moment": "^3.5.0",
     "@nebular/theme": "^3.5.0",
-    "chart.js": "^2.8.0",
+    "chart.js": "^2.9.4",
     "core-js": "^2.5.4",
     "moment": "^2.24.0",
     "nebular-icons": "^1.1.0",
